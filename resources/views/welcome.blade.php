@@ -15,39 +15,37 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/bootstrap_limitless.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/layout.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/components.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/colors.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('plugin/css/all.css') }}" rel="stylesheet" type="text/css">
 
     <!-- /global stylesheets -->
 
 </head>
 <body>
 <!-- Main navbar -->
-<div class="navbar navbar-expand-md navbar-dark">
-    <div class="navbar-brand">
-        <a href="index.html" class="d-inline-block">
-            <img src="" alt="">
-        </a>
-    </div>
+    <div class="navbar navbar-expand-md navbar-dark">
+        <div class="navbar-brand">
+            <a href="index.html" class="d-inline-block">
+                <img src="" alt="">
+            </a>
+        </div>
 
-    <div class="d-md-none">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
-            <i class="icon-tree5"></i>
-        </button>
-    </div>
+        <div class="d-md-none">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+                <i class="icon-tree5"></i>
+            </button>
+        </div>
 
-    <div class="collapse navbar-collapse" id="navbar-mobile">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-                <a href="{{ route('login.index') }}" class="navbar-nav-link">
-                    <i class="icon-user-tie"></i>
-                    <span class="d-md-none ml-2">Contact admin</span>
-                </a>
-            </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbar-mobile">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a href="{{ route('login.index') }}" class="navbar-nav-link">
+                        <i class="icon-user-tie"></i>
+                        <span class="d-md-none ml-2">Contact admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
 <!-- /main navbar -->
 
 <!-- Page content -->
@@ -73,7 +71,7 @@
 
                                 <div class="form-group form-group-feedback form-group-feedback-right">
                                     <label for="">Nama Pengguna/ Institusi</label>
-                                    <input type="text" class="form-control" name="nama_pengguna" placeholder="Nama Pengguna/institusi">
+                                    <input type="text" class="form-control" name="nama_pengguna" placeholder="Nama Pengguna/institusi" autocomplete="off">
                                     <div class="form-control-feedback">
                                         <i class="icon-user-plus text-muted"></i>
                                     </div>
@@ -81,7 +79,7 @@
 
                                 <div class="form-group form-group-feedback form-group-feedback-right">
                                     <label for="">Kontak</label>
-                                    <input type="text" class="form-control" name="kontak_pengguna" placeholder="Kontak">
+                                    <input type="text" class="form-control" name="kontak_pengguna" placeholder="Kontak" autocomplete="off">
                                     <div class="form-control-feedback">
                                         <i class="icon-phone text-muted"></i>
                                     </div>
@@ -131,9 +129,8 @@
 <!-- /core JS files -->
 
 <!-- Theme JS files -->
-<script src="{{ asset('plugin/js/pnotify.min.js') }}"></script>
+<script src="{{ asset('plugin/js/sweetalert2.js') }}"></script>
 <script src="{{ asset('assets/js/app.js') }}"></script>
-<script src="{{ asset('plugin/js/all.js') }}"></script>
 
 <script type="text/javascript">
     $(window).on('load', function () {
@@ -151,38 +148,49 @@
                     success: function (response) {
                         var pesan = JSON.parse(response);
                         if (pesan.error != null) {
-                            new PNotify({
-                                title: 'Error notice',
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error Notice',
                                 text: pesan.error,
-                                type: 'error',
-                                delay : '1000',
-                                hide: true
-                            });
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
                         } else if (pesan.success != null) {
                             setTimeout(function () {
                                 window.location.reload(1);
                             },2000);
-                            new PNotify({
-                                title: 'Success notice',
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success Notice',
                                 text: pesan.success,
-                                type: 'success'
-                            });
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
                         } else {
-                            new PNotify({
-                                title: 'Warning',
-                                text: "Can't retrieve any data from server",
-                                hide: true
-                            });
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Error Notice',
+                                text: 'Can\'t retrieve any data from server',
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
                             $('#submit').attr("data-aksi", "input");
                         }
 
 
                     },
                     fail: function () {
-                        new PNotify({
-                            title: 'Error notice',
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error Notice',
                             text: 'Can\'t retrieve any data from server, please contact your administrator',
-                        });
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
                     }
                 });
             }

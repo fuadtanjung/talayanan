@@ -1,88 +1,88 @@
 @extends('layouts.navbar')
 
 @section('header')
-    <h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Klasifikasi</span> - Dampak</h4>
+    <h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Klasifikasi</span> - Urgensi</h4>
     <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
 @endsection
 
 @section('content')
-        <div class="card">
-            <div class="card-header header-elements-inline">
-                <h4 class="card-title">Dampak</h4>
-                <div class="header-elements">
-                    <div class="list-icons">
-                        <a class="list-icons-item" data-action="collapse"></a>
-                        <a class="list-icons-item" data-action="reload"></a>
-                    </div>
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h4 class="card-title">Urgensi</h4>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
                 </div>
             </div>
-
-            <div class="card-body header-elements-sm-inline">
-            <button type="button" class="btn bg-primary btn-labeled btn-labeled-left rounded-round" data-toggle="modal" data-target="#input_dampak">
+        </div>
+        <div class="card-body header-elements-sm-inline">
+            <button type="button" class="btn bg-primary btn-labeled btn-labeled-left rounded-round" data-toggle="modal" data-target="#input_urgensi">
                 <b><i class="icon-plus-circle2"></i></b>
                 Tambah
             </button>
-            </div>
-
-            <table class="table datatable-basic table-bordered table-hover" width="100%" id="datatable">
-                <thead>
-                <tr>
-                    <th>Nama </th>
-                    <th>Singkatan</th>
-                    <th class="text-center">Actions</th>
-                </tr>
-                </thead>
-            </table>
         </div>
+        <table class="table datatable-basic table-bordered table-hover" width="100%" id="datatable">
+            <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Singkatan</th>
+                <th>Aksi</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
 
-        <div id="input_dampak" class="modal fade" data-backdrop="false">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary">
-                        <h6 class="modal-title" style="color: white">Data Dampak</h6>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
+            <div id="input_urgensi" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary">
+                            <h6 class="modal-title" style="color: white">Input Urgensi</h6>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
 
-                    <div class="modal-body">
-                        <form id="form_dampak" class="form-material">
-                            {{ csrf_field() }}
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <h6>Nama Dampak</h6>
-                                            <input type="text" class="form-control" id="nama_dampak" name="nama_dampak">
+                        <div class="modal-body">
+                            <form id="form_urgensi" class="form-material" data-backdrop="false">
+                                {{ csrf_field() }}
+                                <div class="row clearfix">
+                                    <div class="col-sm-12">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <h6>Nama Urgensi</h6>
+                                                <input type="text" class="form-control" id="nama_urgensi" name="nama_urgensi">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <h6>Singkatan</h6>
+                                                <input type="text" class="form-control" id="sk_urgensi" name="singkatan">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-12">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <h6>Singkatan</h6>
-                                            <input type="text" class="form-control" id="sk_dampak" name="singkatan">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                            </form>
+                        </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-link legitRipple" data-dismiss="modal">Tutup<span class="legitRipple-ripple" style="left: 59.2894%; top: 39.4737%; transform: translate3d(-50%, -50%, 0px); width: 225.475%; opacity: 0;"></span></button>
-                        <button type="button" class="btn btn-primary legitRipple" aksi="input" id="submit_dampak">Simpan</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-link legitRipple" data-dismiss="modal">Tutup<span class="legitRipple-ripple" style="left: 59.2894%; top: 39.4737%; transform: translate3d(-50%, -50%, 0px); width: 225.475%; opacity: 0;"></span></button>
+                            <button type="button" class="btn btn-primary legitRipple" aksi="input" id="submit_urgensi">Simpan</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 @endsection
+
 @section('js')
     <script type="text/javascript">
         function loadData() {
             $('#datatable').dataTable({
-                "ajax": "{{ url('/dampak/data') }}",
+
+                "ajax": "{{ url('/urgensi/data') }}",
                 "columns": [
-                    { "data": "nama_dampak" },
-                    { "data": "sk_dampak" },
+                    { "data": "nama_urgensi" },
+                    { "data": "sk_urgensi" },
                     { "data": "action" }
                 ],
                 scrollX: true,
@@ -98,19 +98,19 @@
             });
         }
 
-        function resetFormDampak() {
-            $("#form_dampak")[0].reset();
+        function resetFormUrgensi() {
+            $("#form_urgensi")[0].reset();
         }
 
         $(window).on('load', function () {
             loadData();
-            $('#submit_dampak').click(function () {
-                var aksi = $("#submit_dampak").attr("aksi");
+            $('#submit_urgensi').click(function () {
+                var aksi = $("#submit_urgensi").attr("aksi");
                 if(aksi=="input"){
                     $.ajax({
-                        url: "{{ url('/dampak/input') }}",
+                        url: "{{ url('/urgensi/input') }}",
                         type: "post",
-                        data: new FormData($('#form_dampak')[0]),
+                        data: new FormData($('#form_urgensi')[0]),
                         cache: false,
                         contentType: false,
                         processData: false,
@@ -131,8 +131,8 @@
                                     position: 'top-right',
                                     text: pesan.success,
                                 });
-                                resetFormDampak();
-                                $('#input_dampak').modal('toggle');
+                                resetFormUrgensi();
+                                $('#input_urgensi').modal('toggle');
                                 $('#datatable').DataTable().destroy();
                                 loadData();
                             }else {
@@ -153,11 +153,11 @@
                     });
                 }
                 else if(aksi=="edit"){
-                    var id_dampak = $("#submit_dampak").attr("iddampak");
+                    var id_urgensi = $("#submit_urgensi").attr("idurgensi");
                     $.ajax({
-                        url: "{{ url('/dampak/edit') }}/"+id_dampak,
+                        url: "{{ url('/urgensi/edit') }}/"+id_urgensi,
                         type: "post",
-                        data: new FormData($('#form_dampak')[0]),
+                        data: new FormData($('#form_urgensi')[0]),
                         cache: false,
                         contentType: false,
                         processData: false,
@@ -178,20 +178,19 @@
                                     position: 'top-right',
                                     text: pesan.success,
                                 });
-                                resetFormDampak();
-                                $('#input_dampak').modal('toggle');
+                                resetFormUrgensi();
+                                $('#input_urgensi').modal('toggle');
                                 $('#datatable').DataTable().destroy();
                                 loadData();
+
                             }else {
                                 Toast.fire({
                                     type: 'warning',
                                     position: 'top-right',
                                     text: 'Can\'t retrieve any data from server',
                                 });
-                                $('#submit_dampak').attr("data-aksi","input");
+                                $('#submit_urgensi').attr("data-aksi","input");
                             }
-
-
                         },
                         fail: function () {
                             Toast.fire({
@@ -207,11 +206,11 @@
             $('#datatable tbody').on('click', '#edit', function (e) {
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
-                $('#nama_dampak').val(data.nama_dampak).change();
-                $('#sk_dampak').val(data.sk_dampak).change();
-                $("#submit_dampak").attr("aksi","edit");
-                $('#submit_dampak').attr("iddampak",data.id_dampak);
-                $('#input_dampak').modal('toggle');
+                $('#nama_urgensi').val(data.nama_urgensi).change();
+                $('#sk_urgensi').val(data.sk_urgensi).change();
+                $("#submit_urgensi").attr("aksi","edit");
+                $('#submit_urgensi').attr("idurgensi",data.id_urgensi);
+                $('#input_urgensi').modal('toggle');
             } );
 
 
@@ -233,7 +232,7 @@
                 }).then((result) => {
                     if (result.value) {
                         $.ajax({
-                            url: "{{ url('/dampak/delete/') }}/" + data.id_dampak,
+                            url: "{{ url('/urgensi/delete/') }}/" + data.id_urgensi,
                             type: "post",
                             data: {
                                 "_token": "{{ csrf_token() }}",
@@ -264,12 +263,11 @@
             });
 
 
-            $('#input_dampak').on('hidden.bs.modal', function () {
-                resetFormDampak();
-                $("#submit_dampak").attr("aksi","input");
-                $('#submit_dampak').removeAttr("iddampak");
+            $('#input_urgensi').on('hidden.bs.modal', function () {
+                resetFormUrgensi();
+                $("#submit_urgensi").attr("aksi","input");
+                $('#submit_urgensi').removeAttr("idurgensi");
             });
         })
     </script>
-
 @endsection

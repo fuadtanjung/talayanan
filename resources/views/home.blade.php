@@ -1,5 +1,10 @@
 @extends('layouts.navbar')
 
+@section('header')
+    <h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Home</span> - Dashboard</h4>
+    <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+    @endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -24,20 +29,9 @@
 @section('js')
     <script type="text/javascript">
         @if(Session::has('success'))
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
-
         Toast.fire({
             type: 'success',
+            position: 'top',
             title: '{{ Session::get('success') }}',
         })
         @endif

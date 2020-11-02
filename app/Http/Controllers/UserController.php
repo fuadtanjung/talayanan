@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dampak;
+
+use App\Models\Userkl;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class DampakController extends Controller
+class UserController extends Controller
 {
     public function index(){
-        return view('klasifikasi.dampak');
+        return view('klasifikasi.user');
     }
 
     protected function  validasiData($data){
@@ -19,23 +20,23 @@ class DampakController extends Controller
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'nama_dampak' => 'required',
-            'singkatan' => 'required',
+            'nama_user' => 'required:userkl ',
+            'singkatan' => 'required:userkl',
         ], $pesan);
     }
 
     public function input(Request $request){
         $validasi = $this->validasiData($request->all());
         if ($validasi->passes()) {
-            $dampak = new Dampak;
-            $dampak->nama_dampak = $request->nama_dampak;
-            $dampak->sk_dampak = $request->singkatan;
+            $user = new Userkl;
+            $user->nama_user = $request->nama_user;
+            $user->sk_user = $request->singkatan;
 
-            if($dampak->save()){
-                return json_encode(array("success"=>"Berhasil Menambahkan Data Dampak"));
+            if($user->save()){
+                return json_encode(array("success"=>"Berhasil Menambahkan Data Pengaduan"));
             }
             else{
-                return json_encode(array("error"=>"Gagal Menambahkan Data Dampak"));
+                return json_encode(array("error"=>"Gagal Menambahkan Data Pengaduan"));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();
@@ -48,12 +49,12 @@ class DampakController extends Controller
     }
 
     public function ajaxTable(){
-        $dampak =  Dampak::all();
+        $user =  Userkl::all();
         try {
-            return Datatables::of($dampak)
-                ->addColumn('action', function ($userss) {
+            return Datatables::of($user)
+                ->addColumn('action', function ($userkl) {
                     return "
-                        <a href=\"#\" class=\"btn btn-sm btn-outline-success rounded-round\" id=\"edit\"><i class=\"icon-pencil\"></i> Edit </a>
+                         <a href=\"#\" class=\"btn btn-sm btn-outline-success rounded-round\" id=\"edit\"><i class=\"icon-pencil\"></i> Edit </a>
                         <a href=\"#\" class=\"btn btn-sm btn-outline-danger rounded-round\" id=\"delete\"><i class=\"icon-trash\"></i> Hapus </a>
                     ";
                 })
@@ -64,14 +65,14 @@ class DampakController extends Controller
     public function edit($id, Request $request){
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()) {
-            $dampak = Dampak::where('id_dampak', $id)->first();
-            $dampak->nama_dampak = $request->nama_dampak;
-            $dampak->sk_dampak = $request->singkatan;
+            $user = Userkl::where('id_user', $id)->first();
+            $user->nama_user = $request->nama_user;
+            $user->sk_user = $request->singkatan;
 
-            if ($dampak->update()) {
-                return json_encode(array("success" => "Berhasil Merubah Data Dampak :)"));
+            if ($user->update()) {
+                return json_encode(array("success" => "Berhasil Merubah Data User :)"));
             } else {
-                return json_encode(array("error" => "Gagal Merubah Data Dampak :("));
+                return json_encode(array("error" => "Gagal Merubah Data User :("));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();
@@ -84,11 +85,11 @@ class DampakController extends Controller
     }
 
     public function delete($id){
-        $dampak = Dampak::where('id_dampak', $id)->first();
-        if($dampak->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Dampak :)"));
+        $user = Userkl::where('id_user', $id)->first();
+        if($user->delete()){
+            return json_encode(array("success"=>"Berhasil Menghapus Data User :)"));
         }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Dampak :("));
+            return json_encode(array("error"=>"Gagal Menghapus Data User :("));
         }
     }
 }

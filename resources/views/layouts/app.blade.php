@@ -12,17 +12,14 @@
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/styles.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/bootstrap_limitless.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/layout.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/components.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/components.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/colors.css') }}" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
-
-
-
 </head>
-<body>
+<body class="{{ request()->is('selesai') ? 'sidebar-xs' : '' }}">
 
 @yield('navbar')
 
@@ -33,18 +30,22 @@
     <!-- /core JS files -->
 
     <!-- Theme JS files -->
+    <script src="{{ asset('assets/js/uniform.min.js') }}"></script>
+    <script src="{{ asset('assets/js/prism.min.js') }}"></script>
     <script src="{{ asset('plugin/js/sweet_alert.min.js') }}"></script>
-    <script src="{{ asset('plugin/js/pnotify.min.js') }}"></script>
     <script src="{{ asset('plugin/js/datatables.min.js') }}"></script>
-    <script src="{{ asset('plugin/js/prism.min.js') }}"></script>
-
-
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="{{ asset('plugin/js/all.js') }}"></script>
     <!-- /theme JS files -->
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            showConfirmButton: false,
+            timer: 2000,
+        })
+    </script>
 
-@yield('js')
-
+    @yield('js')
 
 </body>
 </html>

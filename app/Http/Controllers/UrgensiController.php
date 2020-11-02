@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dampak;
+use App\Models\Urgensi;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class DampakController extends Controller
+class UrgensiController extends Controller
 {
     public function index(){
-        return view('klasifikasi.dampak');
+        return view('klasifikasi.urgensi');
     }
 
     protected function  validasiData($data){
@@ -19,23 +19,23 @@ class DampakController extends Controller
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'nama_dampak' => 'required',
-            'singkatan' => 'required',
+            'nama_urgensi' => 'required:Urgensi ',
+            'singkatan' => 'required:Urgensi',
         ], $pesan);
     }
 
     public function input(Request $request){
         $validasi = $this->validasiData($request->all());
         if ($validasi->passes()) {
-            $dampak = new Dampak;
-            $dampak->nama_dampak = $request->nama_dampak;
-            $dampak->sk_dampak = $request->singkatan;
+            $urgensi = new Urgensi;
+            $urgensi->nama_urgensi = $request->nama_urgensi;
+            $urgensi->sk_urgensi = $request->singkatan;
 
-            if($dampak->save()){
-                return json_encode(array("success"=>"Berhasil Menambahkan Data Dampak"));
+            if($urgensi->save()){
+                return json_encode(array("success"=>"Berhasil Menambahkan Data Urgensi"));
             }
             else{
-                return json_encode(array("error"=>"Gagal Menambahkan Data Dampak"));
+                return json_encode(array("error"=>"Gagal Menambahkan Data Urgensi"));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();
@@ -48,12 +48,12 @@ class DampakController extends Controller
     }
 
     public function ajaxTable(){
-        $dampak =  Dampak::all();
+        $urgensi =  Urgensi::all();
         try {
-            return Datatables::of($dampak)
+            return Datatables::of($urgensi)
                 ->addColumn('action', function ($userss) {
                     return "
-                        <a href=\"#\" class=\"btn btn-sm btn-outline-success rounded-round\" id=\"edit\"><i class=\"icon-pencil\"></i> Edit </a>
+                      <a href=\"#\" class=\"btn btn-sm btn-outline-success rounded-round\" id=\"edit\"><i class=\"icon-pencil\"></i> Edit </a>
                         <a href=\"#\" class=\"btn btn-sm btn-outline-danger rounded-round\" id=\"delete\"><i class=\"icon-trash\"></i> Hapus </a>
                     ";
                 })
@@ -64,14 +64,14 @@ class DampakController extends Controller
     public function edit($id, Request $request){
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()) {
-            $dampak = Dampak::where('id_dampak', $id)->first();
-            $dampak->nama_dampak = $request->nama_dampak;
-            $dampak->sk_dampak = $request->singkatan;
+            $urgensi = Urgensi::where('id_urgensi', $id)->first();
+            $urgensi->nama_urgensi = $request->nama_urgensi;
+            $urgensi->sk_urgensi = $request->singkatan;
 
-            if ($dampak->update()) {
-                return json_encode(array("success" => "Berhasil Merubah Data Dampak :)"));
+            if ($urgensi->update()) {
+                return json_encode(array("success" => "Berhasil Merubah Data Urgensi :)"));
             } else {
-                return json_encode(array("error" => "Gagal Merubah Data Dampak :("));
+                return json_encode(array("error" => "Gagal Merubah Data Urgensi :("));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();
@@ -84,11 +84,11 @@ class DampakController extends Controller
     }
 
     public function delete($id){
-        $dampak = Dampak::where('id_dampak', $id)->first();
-        if($dampak->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Dampak :)"));
+        $urgensi = Urgensi::where('id_urgensi', $id)->first();
+        if($urgensi->delete()){
+            return json_encode(array("success"=>"Berhasil Menghapus Data Urgensi :)"));
         }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Dampak :("));
+            return json_encode(array("error"=>"Gagal Menghapus Data Urgensi :("));
         }
     }
 }

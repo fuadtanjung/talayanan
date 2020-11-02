@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dampak;
+use App\Models\Jenis;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class DampakController extends Controller
+class JenisController extends Controller
 {
     public function index(){
-        return view('klasifikasi.dampak');
+        return view('klasifikasi.jenis');
     }
 
     protected function  validasiData($data){
@@ -19,23 +19,23 @@ class DampakController extends Controller
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'nama_dampak' => 'required',
-            'singkatan' => 'required',
+            'nama_jenis' => 'required:Jenis ',
+            'singkatan' => 'required:Jenis',
         ], $pesan);
     }
 
     public function input(Request $request){
         $validasi = $this->validasiData($request->all());
         if ($validasi->passes()) {
-            $dampak = new Dampak;
-            $dampak->nama_dampak = $request->nama_dampak;
-            $dampak->sk_dampak = $request->singkatan;
+            $jenis = new Jenis;
+            $jenis->nama_jenis = $request->nama_jenis;
+            $jenis->sk_jenis = $request->singkatan;
 
-            if($dampak->save()){
-                return json_encode(array("success"=>"Berhasil Menambahkan Data Dampak"));
+            if($jenis->save()){
+                return json_encode(array("success"=>"Berhasil Menambahkan Data Jenis"));
             }
             else{
-                return json_encode(array("error"=>"Gagal Menambahkan Data Dampak"));
+                return json_encode(array("error"=>"Gagal Menambahkan Data Jenis"));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();
@@ -48,9 +48,9 @@ class DampakController extends Controller
     }
 
     public function ajaxTable(){
-        $dampak =  Dampak::all();
+        $jenis =  Jenis::all();
         try {
-            return Datatables::of($dampak)
+            return Datatables::of($jenis)
                 ->addColumn('action', function ($userss) {
                     return "
                         <a href=\"#\" class=\"btn btn-sm btn-outline-success rounded-round\" id=\"edit\"><i class=\"icon-pencil\"></i> Edit </a>
@@ -64,14 +64,14 @@ class DampakController extends Controller
     public function edit($id, Request $request){
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()) {
-            $dampak = Dampak::where('id_dampak', $id)->first();
-            $dampak->nama_dampak = $request->nama_dampak;
-            $dampak->sk_dampak = $request->singkatan;
+            $jenis = Jenis::where('id_jenis', $id)->first();
+            $jenis->nama_jenis = $request->nama_jenis;
+            $jenis->sk_jenis = $request->singkatan;
 
-            if ($dampak->update()) {
-                return json_encode(array("success" => "Berhasil Merubah Data Dampak :)"));
+            if ($jenis->update()) {
+                return json_encode(array("success" => "Berhasil Merubah Data Jenis :)"));
             } else {
-                return json_encode(array("error" => "Gagal Merubah Data Dampak :("));
+                return json_encode(array("error" => "Gagal Merubah Data Jenis :("));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();
@@ -84,11 +84,11 @@ class DampakController extends Controller
     }
 
     public function delete($id){
-        $dampak = Dampak::where('id_dampak', $id)->first();
-        if($dampak->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Dampak :)"));
+        $jenis = Jenis::where('id_jenis', $id)->first();
+        if($jenis->delete()){
+            return json_encode(array("success"=>"Berhasil Menghapus Data Jenis :)"));
         }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Dampak :("));
+            return json_encode(array("error"=>"Gagal Menghapus Data Jenis :("));
         }
     }
 }

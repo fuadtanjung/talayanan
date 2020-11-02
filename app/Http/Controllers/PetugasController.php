@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dampak;
+use App\Models\Petugas;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class DampakController extends Controller
+class PetugasController extends Controller
 {
     public function index(){
-        return view('klasifikasi.dampak');
+        return view('klasifikasi.petugas');
     }
 
     protected function  validasiData($data){
@@ -19,23 +19,21 @@ class DampakController extends Controller
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'nama_dampak' => 'required',
-            'singkatan' => 'required',
+            'inisial' => 'required:Petugas',
         ], $pesan);
     }
 
     public function input(Request $request){
         $validasi = $this->validasiData($request->all());
         if ($validasi->passes()) {
-            $dampak = new Dampak;
-            $dampak->nama_dampak = $request->nama_dampak;
-            $dampak->sk_dampak = $request->singkatan;
+            $petugas = new Petugas;
+            $petugas->in_petugas = $request->inisial;
 
-            if($dampak->save()){
-                return json_encode(array("success"=>"Berhasil Menambahkan Data Dampak"));
+            if($petugas->save()){
+                return json_encode(array("success"=>"Berhasil Menambahkan Data Petugas "));
             }
             else{
-                return json_encode(array("error"=>"Gagal Menambahkan Data Dampak"));
+                return json_encode(array("error"=>"Gagal Menambahkan Data Petugas"));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();
@@ -48,12 +46,12 @@ class DampakController extends Controller
     }
 
     public function ajaxTable(){
-        $dampak =  Dampak::all();
+        $petugas =  Petugas::all();
         try {
-            return Datatables::of($dampak)
+            return Datatables::of($petugas)
                 ->addColumn('action', function ($userss) {
                     return "
-                        <a href=\"#\" class=\"btn btn-sm btn-outline-success rounded-round\" id=\"edit\"><i class=\"icon-pencil\"></i> Edit </a>
+                       <a href=\"#\" class=\"btn btn-sm btn-outline-success rounded-round\" id=\"edit\"><i class=\"icon-pencil\"></i> Edit </a>
                         <a href=\"#\" class=\"btn btn-sm btn-outline-danger rounded-round\" id=\"delete\"><i class=\"icon-trash\"></i> Hapus </a>
                     ";
                 })
@@ -64,14 +62,13 @@ class DampakController extends Controller
     public function edit($id, Request $request){
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()) {
-            $dampak = Dampak::where('id_dampak', $id)->first();
-            $dampak->nama_dampak = $request->nama_dampak;
-            $dampak->sk_dampak = $request->singkatan;
+            $petugas = Petugas::where('id_petugas', $id)->first();
+            $petugas->in_petugas = $request->inisial;
 
-            if ($dampak->update()) {
-                return json_encode(array("success" => "Berhasil Merubah Data Dampak :)"));
+            if ($petugas->update()) {
+                return json_encode(array("success" => "Berhasil Merubah Data Petugas :)"));
             } else {
-                return json_encode(array("error" => "Gagal Merubah Data Dampak :("));
+                return json_encode(array("error" => "Gagal Merubah Data Petugas :("));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();
@@ -84,11 +81,11 @@ class DampakController extends Controller
     }
 
     public function delete($id){
-        $dampak = Dampak::where('id_dampak', $id)->first();
-        if($dampak->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Dampak :)"));
+        $petugas = Petugas::where('id_petugas', $id)->first();
+        if($petugas->delete()){
+            return json_encode(array("success"=>"Berhasil Menghapus Data Petugas :)"));
         }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Dampak :("));
+            return json_encode(array("error"=>"Gagal Menghapus Data Petugas :("));
         }
     }
 }

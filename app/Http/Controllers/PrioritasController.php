@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dampak;
+use App\Models\Prioritas;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class DampakController extends Controller
+class PrioritasController extends Controller
 {
     public function index(){
-        return view('klasifikasi.dampak');
+        return view('klasifikasi.prioritas');
     }
 
     protected function  validasiData($data){
@@ -19,23 +19,23 @@ class DampakController extends Controller
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'nama_dampak' => 'required',
-            'singkatan' => 'required',
+            'nama_prioritas' => 'required:Userss ',
+            'singkatan' => 'required:Userss',
         ], $pesan);
     }
 
     public function input(Request $request){
         $validasi = $this->validasiData($request->all());
         if ($validasi->passes()) {
-            $dampak = new Dampak;
-            $dampak->nama_dampak = $request->nama_dampak;
-            $dampak->sk_dampak = $request->singkatan;
+            $prioritas = new Prioritas;
+            $prioritas->nama_prioritas = $request->nama_prioritas;
+            $prioritas->sk_prioritas = $request->singkatan;
 
-            if($dampak->save()){
-                return json_encode(array("success"=>"Berhasil Menambahkan Data Dampak"));
+            if($prioritas->save()){
+                return json_encode(array("success"=>"Berhasil Menambahkan Data Prioritas"));
             }
             else{
-                return json_encode(array("error"=>"Gagal Menambahkan Data Dampak"));
+                return json_encode(array("error"=>"Gagal Menambahkan Data Priroitas"));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();
@@ -48,12 +48,12 @@ class DampakController extends Controller
     }
 
     public function ajaxTable(){
-        $dampak =  Dampak::all();
+        $prioritas =  Prioritas::all();
         try {
-            return Datatables::of($dampak)
+            return Datatables::of($prioritas)
                 ->addColumn('action', function ($userss) {
                     return "
-                        <a href=\"#\" class=\"btn btn-sm btn-outline-success rounded-round\" id=\"edit\"><i class=\"icon-pencil\"></i> Edit </a>
+                         <a href=\"#\" class=\"btn btn-sm btn-outline-success rounded-round\" id=\"edit\"><i class=\"icon-pencil\"></i> Edit </a>
                         <a href=\"#\" class=\"btn btn-sm btn-outline-danger rounded-round\" id=\"delete\"><i class=\"icon-trash\"></i> Hapus </a>
                     ";
                 })
@@ -64,14 +64,14 @@ class DampakController extends Controller
     public function edit($id, Request $request){
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()) {
-            $dampak = Dampak::where('id_dampak', $id)->first();
-            $dampak->nama_dampak = $request->nama_dampak;
-            $dampak->sk_dampak = $request->singkatan;
+            $prioritas = Prioritas::where('id_prioritas', $id)->first();
+            $prioritas->nama_prioritas = $request->nama_prioritas;
+            $prioritas->sk_prioritas = $request->singkatan;
 
-            if ($dampak->update()) {
-                return json_encode(array("success" => "Berhasil Merubah Data Dampak :)"));
+            if ($prioritas->update()) {
+                return json_encode(array("success" => "Berhasil Merubah Data Prioritas :)"));
             } else {
-                return json_encode(array("error" => "Gagal Merubah Data Dampak :("));
+                return json_encode(array("error" => "Gagal Merubah Data Prioritas :("));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();
@@ -84,11 +84,11 @@ class DampakController extends Controller
     }
 
     public function delete($id){
-        $dampak = Dampak::where('id_dampak', $id)->first();
-        if($dampak->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Dampak :)"));
+        $prioritas = Prioritas::where('id_prioritas', $id)->first();
+        if($prioritas->delete()){
+            return json_encode(array("success"=>"Berhasil Menghapus Data Prioritas :)"));
         }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Dampak :("));
+            return json_encode(array("error"=>"Gagal Menghapus Data Prioritas :("));
         }
     }
 }

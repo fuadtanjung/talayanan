@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dampak;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class DampakController extends Controller
+class KategoriController extends Controller
 {
     public function index(){
-        return view('klasifikasi.dampak');
+        return view('klasifikasi.kategori');
     }
 
     protected function  validasiData($data){
@@ -19,23 +19,23 @@ class DampakController extends Controller
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'nama_dampak' => 'required',
-            'singkatan' => 'required',
+            'nama_kategori' => 'required:Kategori ',
+            'singkatan' => 'required:Kategori',
         ], $pesan);
     }
 
     public function input(Request $request){
         $validasi = $this->validasiData($request->all());
         if ($validasi->passes()) {
-            $dampak = new Dampak;
-            $dampak->nama_dampak = $request->nama_dampak;
-            $dampak->sk_dampak = $request->singkatan;
+            $kategori = new Kategori;
+            $kategori->nama_kategori = $request->nama_kategori;
+            $kategori->sk_kategori = $request->singkatan;
 
-            if($dampak->save()){
-                return json_encode(array("success"=>"Berhasil Menambahkan Data Dampak"));
+            if($kategori->save()){
+                return json_encode(array("success"=>"Berhasil Menambahkan Data Kategori"));
             }
             else{
-                return json_encode(array("error"=>"Gagal Menambahkan Data Dampak"));
+                return json_encode(array("error"=>"Gagal Menambahkan Data Kategori"));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();
@@ -48,9 +48,9 @@ class DampakController extends Controller
     }
 
     public function ajaxTable(){
-        $dampak =  Dampak::all();
+        $kategori =  Kategori::all();
         try {
-            return Datatables::of($dampak)
+            return Datatables::of($kategori)
                 ->addColumn('action', function ($userss) {
                     return "
                         <a href=\"#\" class=\"btn btn-sm btn-outline-success rounded-round\" id=\"edit\"><i class=\"icon-pencil\"></i> Edit </a>
@@ -64,14 +64,14 @@ class DampakController extends Controller
     public function edit($id, Request $request){
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()) {
-            $dampak = Dampak::where('id_dampak', $id)->first();
-            $dampak->nama_dampak = $request->nama_dampak;
-            $dampak->sk_dampak = $request->singkatan;
+            $kategori = Kategori::where('id_kategori', $id)->first();
+            $kategori->nama_kategori = $request->nama_kategori;
+            $kategori->sk_kategori = $request->singkatan;
 
-            if ($dampak->update()) {
-                return json_encode(array("success" => "Berhasil Merubah Data Dampak :)"));
+            if ($kategori->update()) {
+                return json_encode(array("success" => "Berhasil Merubah Data Kategori :)"));
             } else {
-                return json_encode(array("error" => "Gagal Merubah Data Dampak :("));
+                return json_encode(array("error" => "Gagal Merubah Data Kategori :("));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();
@@ -84,11 +84,11 @@ class DampakController extends Controller
     }
 
     public function delete($id){
-        $dampak = Dampak::where('id_dampak', $id)->first();
-        if($dampak->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Dampak :)"));
+        $kategori = Kategori::where('id_kategori', $id)->first();
+        if($kategori->delete()){
+            return json_encode(array("success"=>"Berhasil Menghapus Data Kategori :)"));
         }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Dampak :("));
+            return json_encode(array("error"=>"Gagal Menghapus Data Kategori :("));
         }
     }
 }

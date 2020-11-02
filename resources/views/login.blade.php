@@ -24,6 +24,20 @@
 </head>
 <body>
 
+<div class="navbar navbar-expand-md navbar-dark">
+    <div class="navbar-brand">
+        <a href="index.html" class="d-inline-block">
+            <img src="" alt="">
+        </a>
+    </div>
+
+    <div class="d-md-none">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+            <i class="icon-tree5"></i>
+        </button>
+    </div>
+</div>
+
     <!-- Page content -->
     <div class="page-content">
 
@@ -80,6 +94,14 @@
 
             </div>
             <!-- /content area -->
+
+            <div class="navbar navbar-expand-lg navbar-light">
+                <div class="navbar-collapse collapse" id="navbar-footer">
+					<span class="navbar-text">
+						&copy; 2020. <a href="#">LPSE Diskominfo</a> <a href="#"></a>
+					</span>
+                </div>
+            </div>
 
         </div>
         <!-- /main content -->
