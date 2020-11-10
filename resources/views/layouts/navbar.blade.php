@@ -24,7 +24,12 @@
             <ul class="navbar-nav">
                 <li class="nav-item dropdown dropdown-user">
                     <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
+                        @if ( auth()->user()->role->nama == "admin")
                         <img src="{{ asset('images/logo2.png') }}" class="rounded-circle mr-2" height="34" alt="">
+                        @endif
+                            @if ( auth()->user()->role->nama == "pengguna")
+                                <img src="{{ asset('images/user.png') }}" class="rounded-circle mr-2" height="34" alt="">
+                            @endif
                         <span>{{ Auth::user()->name }}</span>
                     </a>
 
@@ -88,14 +93,21 @@
                         <div class="card-body">
                             <div class="media">
                                 <div class="mr-3">
+                                    @if ( auth()->user()->role->nama == "admin")
                                     <a href="#"><img src="{{ asset('images/logo3.png') }}" width="38" height="38" class="rounded-circle" alt=""></a>
+                                        @endif
+                                        @if ( auth()->user()->role->nama == "pengguna")
+                                            <a href="#"><img src="{{ asset('images/user.png') }}" width="38" height="38" class="rounded-circle" alt=""></a>
+                                        @endif
                                 </div>
 
                                 <div class="media-body">
                                     <div class="media-title font-weight-semibold">{{ Auth::user()->name }}</div>
+                                    @if ( auth()->user()->role->nama == "admin")
                                     <div class="font-size-xs opacity-50">
                                         <i class="icon-pin font-size-sm"></i> &nbsp;Padang
                                     </div>
+                                    @endif
                                 </div>
                             </div>
 
@@ -111,13 +123,15 @@
                             <!-- Main -->
                             <li class="nav-item-header mt-0"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
                             <li class="nav-item">
-                                <a href="{{ url('dashboard') }}" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}">
+                                <a href="{{ url('/') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">
                                     <i class="icon-home4"></i>
                                     <span>
 										Dashboard
 										<span class="d-block font-weight-normal opacity-50">No active orders</span>
 									</span>
                                 </a>
+
+                                @if ( auth()->user()->role->nama == "admin")
                                 <a href="{{ url('admin') }}" class="nav-link {{ request()->is('admin') ? 'active' : '' }}">
                                     <i class="icon-file-text2"></i>
                                     <span>
@@ -150,6 +164,22 @@
                                     <li class="nav-item"><a href="{{ url('petugas') }}" class="nav-link {{ request()->is('petugas') ? 'active' : '' }}">Petugas</a></li>
                                 </ul>
                             </li>
+                            @endif
+
+                            @if ( auth()->user()->role->nama == "pengguna")
+                                <a href="{{ url('user') }}" class="nav-link {{ request()->is('user') ? 'active' : '' }}">
+                                    <i class="icon-file-text2"></i>
+                                    <span>
+										Pengaduan
+									</span>
+                                </a>
+                                <a href="{{ url('user/history') }}" class="nav-link {{ request()->is('user/history') ? 'active' : '' }}">
+                                    <i class="icon-file-text2"></i>
+                                    <span>
+										Riwayat Pengaduan
+									</span>
+                                </a>
+                            @endif
                         </ul>
                     </div>
                     <!-- /main navigation -->

@@ -15,6 +15,7 @@ class CreateInformasiPengaduansTable extends Migration
     {
         Schema::create('informasi_pengaduans', function (Blueprint $table) {
             $table->bigIncrements('id_pengaduan');
+            $table->unsignedBigInteger('users_id');
             $table->unsignedBigInteger('dampak_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('jenis_id')->nullable();
@@ -45,6 +46,7 @@ class CreateInformasiPengaduansTable extends Migration
             $table->foreign('tipe_id')->references('id_tipe')->on('tipes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('kategori_id')->references('id_kategori')->on('kategoris')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('petugas_id')->references('id_petugas')->on('petugas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

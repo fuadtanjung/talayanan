@@ -1,78 +1,61 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
-    public function index()
-    {
+    public function index(){
         return view('register');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+    protected function  validasiData($data){
+        $pesan = [
+            'required' => ':attribute tidak boleh kosong',
+            'unique' => ':attribute tidak boleh sama',
+            'exists' => ':attribute tidak ditemukan'
+        ];
+        return validator($data, [
+            'nip' => 'required|unique:users',
+            'nama' => 'required',
+            'kontak' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+        ], $pesan);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+
+    public function input(Request $request){
+        $validasi = $this->validasiData($request->all());
+        $role = 2;
+        if($validasi->passes()){
+            $user = new User();
+            $user->name = $request->nama;
+            $user->nip = $request->nip;
+            $user->kontak = $request->kontak;
+            $user->username= $request->username;
+            $user->role_id = $role;
+            $user->password = bcrypt($request->password);
+            $user->remember_token = Str::random(30);
+
+            $user->save();
+
+            if($user->save()){
+                return json_encode(array("success"=>"Berhasil Menambahkan Data Pengguna"));
+            }else{
+                return json_encode(array("error"=>"Gagal Menambahkan Data Pengguna"));
+            }
+        }else{
+            $msg = $validasi->getMessageBag()->messages();
+            $err = array();
+            foreach ($msg as $key=>$item) {
+                $err[] = $item[0];
+            }
+
+            return json_encode(array("error"=>$err));
+        }
     }
 }

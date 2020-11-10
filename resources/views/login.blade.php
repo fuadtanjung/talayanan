@@ -36,6 +36,17 @@
             <i class="icon-tree5"></i>
         </button>
     </div>
+
+    <div class="collapse navbar-collapse" id="navbar-mobile">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a href="{{ route('register') }}" class="navbar-nav-link">
+                    <i class="icon-user-plus"></i>
+                    <span>Register</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>
 
     <!-- Page content -->
@@ -70,7 +81,7 @@
                             @endif
 
                             <div class="form-group form-group-feedback form-group-feedback-left">
-                                <input type="email" class="form-control" id="login" name="login" placeholder="email">
+                                <input type="text" class="form-control" id="login" name="login" placeholder="Nip/Nama Pengguna">
                                 <div class="form-control-feedback">
                                     <i class="icon-user text-muted"></i>
                                 </div>

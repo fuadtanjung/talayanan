@@ -2,59 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3e79e59-55d2-4da0-99e7-dda5ffb8fcdb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/talayanan.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/DiajukanController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/DiprosesController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/DirekapController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/JenisController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/KategoriController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ListController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PetugasController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PrioritasController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/TipeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/UrgensiController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/datatables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/prism.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/uniform.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugin/js/sweetalert2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/diajukan.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/diproses.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/direkap.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/hasilprint.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/klasifikasi/jenis.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/klasifikasi/kategori.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/klasifikasi/petugas.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/klasifikasi/prioritas.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/klasifikasi/tipe.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/klasifikasi/urgensi.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/klasifikasi/user.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/modal/_add_pengaduan.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/modal/_detail_diajukan.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DampakController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DampakController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/components.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/components.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/components.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/components.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/plugin/js/datatables.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/plugin/js/datatables.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/plugin/js/pnotify.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/plugin/js/prism.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/plugin/js/sweetalert2.all.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/plugin/js/sweetalert2.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/klasifikasi/dampak.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/klasifikasi/dampak.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckRole.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_08_221817_create_roles_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_08_222311_add_relation_to_users_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/RoleSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/user/history.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/user/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TambahPengaduanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PengaduanController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/InformasiPengaduan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/InformasiPengaduan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_27_062623_create_informasi_pengaduans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_27_062623_create_informasi_pengaduans_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -203,7 +172,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\talayanan\app\Http\Controllers\Auth" />
       <recent name="C:\laragon\www\talayanan\app\Models" />
+      <recent name="C:\laragon\www\talayanan\app" />
       <recent name="C:\laragon\www\talayanan\resources\views" />
       <recent name="C:\laragon\www\talayanan\app\Http\Controllers" />
     </key>
@@ -239,7 +210,14 @@
       <workItem from="1604250758867" duration="8378000" />
       <workItem from="1604316225338" duration="8047000" />
       <workItem from="1604330345687" duration="640000" />
-      <workItem from="1604336551002" duration="2807000" />
+      <workItem from="1604336551002" duration="3418000" />
+      <workItem from="1604383970284" duration="169000" />
+      <workItem from="1604873597715" duration="3188000" />
+      <workItem from="1604876863539" duration="13902000" />
+      <workItem from="1604897046226" duration="217000" />
+      <workItem from="1604897417419" duration="595000" />
+      <workItem from="1604914198133" duration="1130000" />
+      <workItem from="1605018448050" duration="59000" />
     </task>
     <servers />
   </component>
@@ -258,10 +236,14 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="309" y="47" key="#Inspections/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1604167780529" />
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604217402571">
+    <state x="276" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604883450480">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604217402571" />
+    <state x="276" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604883450480" />
+    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604890778127">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604890778127" />
     <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1604167807916" />
     <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1603708510038">
       <screen x="0" y="0" width="1366" height="738" />

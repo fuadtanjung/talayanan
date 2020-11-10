@@ -12,6 +12,10 @@ class InformasiPengaduan extends Model
         'no_tiket','nama_pengguna','kontak_pengguna','deskripsi','waktu_pelaporan','status','tipe_id'
     ];
 
+    public function user(){
+        return $this->belongsTo(User::class,'id_pengaduan','id');
+    }
+
     public function dampak(){
         return $this->belongsTo(Dampak::class,'dampak_id','id_dampak');
     }
