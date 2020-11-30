@@ -16,23 +16,21 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'Admin Lpse',
-            'username' => 'admin',
-            'nip' => '123456789',
+            'email' => 'admin@gmail.com',
             'kontak' => '123456789',
             'password' => bcrypt('admin'),
             'remember_token' => Str::random(30),
-            'role_id'   => 1,
+            'role_id'   => 'adm',
             'created_at' => now(),
         ]);
 
         DB::table('users')->insert([
             'name' => 'Coba',
-            'username' => 'users',
-            'nip' => '12345',
+            'email' => 'user@gmail.com',
             'kontak' => '12345',
             'password' => bcrypt('pengguna'),
             'remember_token' => Str::random(30),
-            'role_id'   => 2,
+            'role_id'   => 'P',
             'created_at' => now(),
         ]);
     }

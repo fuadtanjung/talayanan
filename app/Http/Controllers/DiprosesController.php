@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Detail_petugas;
 use App\Models\InformasiPengaduan;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -9,11 +10,15 @@ use Yajra\DataTables\Facades\DataTables;
 class DiprosesController extends Controller
 {
     public function index(){
-        return view('diproses');
+        return view('admin.diproses');
     }
 
     public function ajaxTable(){
-        $informasi_pelaporan =  InformasiPengaduan::Where('status','ditangani')->get();
+        $informasi_pelaporan =  InformasiPengaduan::join('users','informasi_pengaduans.user_id','=','users.id')
+            ->join('roles','users.role_id','=','roles.id')
+            ->join('media','informasi_pengaduans.media_id','=','media.id_media')
+            ->Where('status','=','diproses')
+            ->get();
         try {
             return Datatables::of($informasi_pelaporan)
                 ->addColumn('action', function ($informasi) {
@@ -35,20 +40,18 @@ class DiprosesController extends Controller
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'nama_pengguna' => 'required:informasi_pelaporan',
-            'kontak_pengguna' => 'required:informasi_pelaporan',
-            'deskripsi' => 'required:informasi_pelaporan',
-            'tipe' => 'required:informasi_pelaporan',
-            'kategori' => 'required:informasi_pelaporan',
-            'user' => 'required:informasi_pelaporan',
-            'jenis' => 'required:informasi_pelaporan',
-            'urgensi' => 'required:informasi_pelaporan',
-            'dampak' => 'required:informasi_pelaporan',
-            'prioritas' => 'required:informasi_pelaporan',
-            'petugas' => 'required:informasi_pelaporan',
-            'keterangan' => 'required:informasi_pelaporan',
-            'solusi' => 'required:informasi_pelaporan',
-            'konfirmasi' => 'required:informasi_pelaporan',
+            'nama_pengguna' => 'required',
+            'kontak_pengguna' => 'required',
+            'deskripsi' => 'required',
+            'tipe' => 'required',
+            'kategori' => 'required',
+            'jenis' => 'required',
+            'urgensi' => 'required',
+            'dampak' => 'required',
+            'prioritas' => 'required',
+            'keterangan' => 'required',
+            'solusi' => 'required',
+            'konfirmasi' => 'required',
         ], $pesan);
     }
 
@@ -58,25 +61,43 @@ class DiprosesController extends Controller
         $validasi = $this->validasiData($request->all());
         $status = 'difasilitasi';
         if ($validasi->passes()) {
-            $informasi_pelaporan = InformasiPengaduan::where('id_pengaduan', $id)->first();
+            $informasi_pelaporan = InformasiPengaduan::where('no_tiket', $id)->first();
             $informasi_pelaporan->kategori_id = $request->kategori;
             $informasi_pelaporan->tipe_id = $request->tipe;
-            $informasi_pelaporan->user_id = $request->user;
             $informasi_pelaporan->urgensi_id = $request->urgensi;
             $informasi_pelaporan->prioritas_id = $request->prioritas;
             $informasi_pelaporan->jenis_id = $request->jenis;
             $informasi_pelaporan->dampak_id = $request->dampak;
-            $informasi_pelaporan->petugas_id = $request->petugas;
+            $informasi_pelaporan->konfirmasi_id = $request->konfirmasi;
             $informasi_pelaporan->keterangan = $request->keterangan;
             $informasi_pelaporan->solusi = $request->solusi;
             $informasi_pelaporan->status = $status;
             $informasi_pelaporan->status_pengguna = $request->konfirmasi;
             $informasi_pelaporan->tgl_pemuktahiran = date('Y-m-d');
             $informasi_pelaporan->tgl_selesai = date('Y-m-d');
-            if ($informasi_pelaporan->update()) {
-                return json_encode(array("success" => "Berhasil Merubah Data Informasi :)"));
+            $informasi_pelaporan->update();
+
+            if ($informasi_pelaporan)  {
+               $my_apikey = 'LBGMSEQL392UXY7C0Y36';
+               $nohape = $request->kontak_pengguna;
+               if($nohape['0']=='0') {
+                   $nohape['0']='2';
+                   $nohape = '6'.$nohape;
+               }
+               $message = "Pengaduan Anda Sudah Diselesaikan";
+               $api_url = "http://panel.rapiwha.com/send_message.php";
+               $api_url .= "?apikey=". urlencode ($my_apikey);
+               $api_url .= "&number=". urlencode ($nohape);
+               $api_url .= "&text=". urlencode ($message);
+
+               $my_result_object = json_decode(file_get_contents($api_url, false));
+
+               $result = [$my_result_object->success , $my_result_object->description , $my_result_object->description];
+               json_encode($result);
+
+                return json_encode(array("success" => "Berhasil Merubah Data Pengaduan :)"));
             } else {
-                return json_encode(array("error" => "Gagal Merubah Data Informasi :("));
+                return json_encode(array("error" => "Gagal Merubah Data Pengaduan :("));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();
@@ -89,7 +110,7 @@ class DiprosesController extends Controller
     }
 
     public function delete($id){
-        $informasi_pelaporan = InformasiPengaduan::where('id_pengaduan', $id)->first();
+        $informasi_pelaporan = InformasiPengaduan::where('no_tiket', $id)->first();
         if($informasi_pelaporan->delete()){
             return json_encode(array("success"=>"Berhasil Menghapus Data Pengaduan :)"));
         }else{

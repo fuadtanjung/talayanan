@@ -9,7 +9,7 @@ use Yajra\DataTables\Facades\DataTables;
 class PrioritasController extends Controller
 {
     public function index(){
-        return view('klasifikasi.prioritas');
+        return view('admin.klasifikasi.prioritas');
     }
 
     protected function  validasiData($data){
@@ -29,7 +29,7 @@ class PrioritasController extends Controller
         if ($validasi->passes()) {
             $prioritas = new Prioritas;
             $prioritas->nama_prioritas = $request->nama_prioritas;
-            $prioritas->sk_prioritas = $request->singkatan;
+            $prioritas->id_prioritas = $request->singkatan;
 
             if($prioritas->save()){
                 return json_encode(array("success"=>"Berhasil Menambahkan Data Prioritas"));
@@ -66,7 +66,7 @@ class PrioritasController extends Controller
         if($validasi->passes()) {
             $prioritas = Prioritas::where('id_prioritas', $id)->first();
             $prioritas->nama_prioritas = $request->nama_prioritas;
-            $prioritas->sk_prioritas = $request->singkatan;
+            $prioritas->id_prioritas = $request->singkatan;
 
             if ($prioritas->update()) {
                 return json_encode(array("success" => "Berhasil Merubah Data Prioritas :)"));

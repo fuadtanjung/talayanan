@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Userkl extends Model
+class Status_konfirmasi extends Model
 {
-    protected $table = 'userkls';
-    protected $primaryKey = 'id_user';
+    protected $table = 'status_konfirmasis';
+    protected $primaryKey = 'id_konfirmasi';
     public $timestamps = false;
     protected $fillable = [
-        'nama_user','sk_user'
+        'nama_konfirmasi'
     ];
-
 
     public function informasi_pengaduan(){
         return $this->hasOne(InformasiPengaduan::class);

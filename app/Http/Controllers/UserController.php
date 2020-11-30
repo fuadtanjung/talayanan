@@ -33,10 +33,10 @@ class UserController extends Controller
             $user->sk_user = $request->singkatan;
 
             if($user->save()){
-                return json_encode(array("success"=>"Berhasil Menambahkan Data Pengaduan"));
+                return json_encode(array("success"=>"Berhasil Menambahkan Data User"));
             }
             else{
-                return json_encode(array("error"=>"Gagal Menambahkan Data Pengaduan"));
+                return json_encode(array("error"=>"Gagal Menambahkan Data User"));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();

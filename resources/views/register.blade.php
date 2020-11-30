@@ -77,13 +77,6 @@
                                  </div>
 
                                 <div class="form-group form-group-feedback form-group-feedback-right">
-                                    <input type="text" class="form-control" name="nip" id="nip" placeholder="Nip">
-                                    <div class="form-control-feedback">
-                                        <i class="icon-credit-card2 text-muted"></i>
-                                    </div>
-                                </div>
-
-                                <div class="form-group form-group-feedback form-group-feedback-right">
                                     <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama">
                                     <div class="form-control-feedback">
                                         <i class="icon-user text-muted"></i>
@@ -91,10 +84,16 @@
                                 </div>
 
                                 <div class="form-group form-group-feedback form-group-feedback-right">
-                                    <input type="text" class="form-control" name="kontak" id="kontak" placeholder="No.Hp/Telephone">
+                                    <input type="text" class="form-control" name="kontak" id="kontak" placeholder="No.Whatsapp">
                                     <div class="form-control-feedback">
                                         <i class="icon-phone text-muted"></i>
                                     </div>
+                                </div>
+
+                                <div class="form-group form-group-feedback form-group-feedback-right">
+                                    <select data-placeholder="Pilih User" id="role" name="role" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                        <option></option>
+                                    </select>
                                 </div>
 
                                 <div class="form-group text-center text-muted content-divider">
@@ -104,7 +103,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group form-group-feedback form-group-feedback-right">
-                                            <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                                            <input type="email" class="form-control" name="email" id="username" placeholder="Email">
                                             <div class="form-control-feedback">
                                                 <i class="icon-user-check text-muted"></i>
                                             </div>
@@ -154,6 +153,9 @@
 <script src="{{ asset('assets/js/blockui.min.js') }}"></script>
 <script src="{{ asset('assets/js/uniform.min.js') }}"></script>
 <script src="{{ asset('plugin/js/sweet_alert.min.js') }}"></script>
+<script src="{{ asset('assets/js/select2.min.js') }}"></script>
+<script src="{{ asset('assets/js/app.js') }}"></script>
+<script src="{{ asset('assets/js/form_select2.js') }}"></script>
 <script>
     const Toast = Swal.mixin({
         toast: true,
@@ -164,7 +166,6 @@
 <script type="text/javascript">
     function resetFormdaftar() {
         $("#form_daftar")[0].reset();
-        $('#nip').val("").change();
         $('#nama').val("").change();
         $('#kontak').val("").change();
         $('#username').val("").change();
@@ -220,4 +221,17 @@
         resetFormdaftar();
         $("#submit_pengguna").attr("submit_pengguna");
     });
+
+    $.ajax({
+        url: '{{ url('list/role') }}',
+        dataType: "json",
+        success: function (data) {
+            var role = jQuery.parseJSON(JSON.stringify(data));
+            $.each(role, function (k, v) {
+                $('#role').append($('<option>', {value: v.id}).text(v.nama))
+            })
+        }
+    });
+
+
 </script>

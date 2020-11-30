@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InformasiPengaduan;
 use App\Models\Tipe;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -9,7 +10,7 @@ use Yajra\DataTables\Facades\DataTables;
 class TipeController extends Controller
 {
     public function index(){
-        return view('klasifikasi.tipe');
+        return view('admin.klasifikasi.tipe');
     }
 
     protected function  validasiData($data){
@@ -29,7 +30,7 @@ class TipeController extends Controller
         if ($validasi->passes()) {
             $tipe = new Tipe;
             $tipe->nama_tipe = $request->nama_tipe;
-            $tipe->sk_tipe = $request->singkatan;
+            $tipe->id_tipe = $request->singkatan;
 
             if($tipe->save()){
                 return json_encode(array("success"=>"Berhasil Menambahkan Data Tipe"));
@@ -61,12 +62,13 @@ class TipeController extends Controller
         } catch (\Exception $e) {
         }
     }
+
     public function edit($id, Request $request){
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()) {
             $tipe = Tipe::where('id_tipe', $id)->first();
+            $tipe->id_tipe = $request->singkatan;
             $tipe->nama_tipe = $request->nama_tipe;
-            $tipe->sk_tipe = $request->singkatan;
 
             if ($tipe->update()) {
                 return json_encode(array("success" => "Berhasil Merubah Data Tipe :)"));
@@ -84,11 +86,15 @@ class TipeController extends Controller
     }
 
     public function delete($id){
-        $tipe = Tipe::where('id_tipe', $id)->first();
-        if($tipe->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Tipe :)"));
+        if (InformasiPengaduan::where('tipe_id',$id)->count() == 0) {
+            $tipe = Tipe::where('id_tipe', $id)->first();
+            if ($tipe->delete()) {
+                return json_encode(array("success" => "Berhasil Menghapus Data Tipe :)"));
+            } else {
+                return json_encode(array("error" => "Gagal Menghapus Data Tipe :("));
+            }
         }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Tipe :("));
+            return json_encode(array("error"=>"Gagal Data Sedang Di Pakai"));
         }
     }
 

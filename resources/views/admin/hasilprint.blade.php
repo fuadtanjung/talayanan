@@ -44,7 +44,7 @@
             <tr>
                 <th rowspan="4">No Tiket</th>
                 <th colspan="4">informasi pelaporan</th>
-                <th rowspan="4">deskripsi</th>
+                <th rowspan="4">denamaripsi</th>
                 <th colspan="7">klasifikasi</th>
                 <th colspan="4">informasi penanganan</th>
                 <th colspan="4">informasi penyelesaian</th>
@@ -94,25 +94,27 @@
             @foreach($informasi_pelaporan as $data)
                 <tr style="font-size: 12px;text-align: center;">
                     <td>{{ $data->no_tiket }}</td>
-                    <td>{{ $data->nama_pengguna }}</td>
-                    <td>{{ $data->kontak_pengguna }}</td>
-                    <td>{{ $data->media_pelaporan }}</td>
+                    <td>{{ $data->name}}</td>
+                    <td>{{ $data->kontak }}</td>
+                    <td>{{ $data->nama_media }}</td>
                     <td>{{ $data->waktu_pelaporan }}</td>
                     <td>{{ $data->deskripsi }}</td>
-                    <td>{{ $data->sk_tipe}}</td>
-                    <td>{{ $data->sk_kategori }}</td>
-                    <td>{{ $data->sk_user }}</td>
-                    <td>{{ $data->sk_jenis }}</td>
-                    <td>{{ $data->sk_urgensi }}</td>
-                    <td>{{ $data->sk_dampak }}</td>
-                    <td>{{ $data->sk_prioritas }}</td>
-                    <td>{{ $data->in_petugas }}</td>
+                    <td>{{ $data->tipe_id}}</td>
+                    <td>{{ $data->kategori_id }}</td>
+                    <td>{{ $data->role_id }}</td>
+                    <td>{{ $data->jenis_id }}</td>
+                    <td>{{ $data->urgensi_id }}</td>
+                    <td>{{ $data->dampak_id }}</td>
+                    <td>{{ $data->prioritas_id }}</td>
+                    @foreach($initials as $d)
+                    <td>{{ $d }}</td>
+                    @endforeach
                     <td>{{ $data->status }}</td>
                     <td>{{ $data->keterangan }}</td>
                     <td>{{ $data->tgl_pemuktahiran }}</td>
                     <td>{{ $data->solusi }}</td>
                     <td>{{ $data->tgl_selesai }}</td>
-                    <td>{{ $data->status_pengguna }}</td>
+                    <td>{{ $data->nama_konfirmasi }}</td>
                 </tr>
             @endforeach
             </tbody>

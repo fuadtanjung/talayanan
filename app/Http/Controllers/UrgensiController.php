@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InformasiPengaduan;
 use App\Models\Urgensi;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -9,7 +10,7 @@ use Yajra\DataTables\Facades\DataTables;
 class UrgensiController extends Controller
 {
     public function index(){
-        return view('klasifikasi.urgensi');
+        return view('admin.klasifikasi.urgensi');
     }
 
     protected function  validasiData($data){
@@ -29,7 +30,7 @@ class UrgensiController extends Controller
         if ($validasi->passes()) {
             $urgensi = new Urgensi;
             $urgensi->nama_urgensi = $request->nama_urgensi;
-            $urgensi->sk_urgensi = $request->singkatan;
+            $urgensi->id_urgensi = $request->singkatan;
 
             if($urgensi->save()){
                 return json_encode(array("success"=>"Berhasil Menambahkan Data Urgensi"));
@@ -66,7 +67,7 @@ class UrgensiController extends Controller
         if($validasi->passes()) {
             $urgensi = Urgensi::where('id_urgensi', $id)->first();
             $urgensi->nama_urgensi = $request->nama_urgensi;
-            $urgensi->sk_urgensi = $request->singkatan;
+            $urgensi->id_urgensi = $request->singkatan;
 
             if ($urgensi->update()) {
                 return json_encode(array("success" => "Berhasil Merubah Data Urgensi :)"));
@@ -84,11 +85,17 @@ class UrgensiController extends Controller
     }
 
     public function delete($id){
-        $urgensi = Urgensi::where('id_urgensi', $id)->first();
-        if($urgensi->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Urgensi :)"));
-        }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Urgensi :("));
+        if (InformasiPengaduan::where('urgensi_id',$id)->count() == 0) {
+            $urgensi = Urgensi::where('id_urgensi', $id)->first();
+            if($urgensi->delete()){
+                return json_encode(array("success"=>"Berhasil Menghapus Data Urgensi :)"));
+            }else{
+                return json_encode(array("error"=>"Gagal Menghapus Data Urgensi :("));
+            }
+
+        }
+        else{
+            return json_encode(array("error"=>"Gagal Data Sedang Di Pakai"));
         }
     }
 }

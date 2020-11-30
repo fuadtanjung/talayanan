@@ -9,6 +9,8 @@ class Prioritas extends Model
 {
     protected $table = 'prioritas';
     protected $primaryKey = 'id_prioritas';
+    public $incrementing = false;
+    public $keyType = 'string';
     public $timestamps = false;
     protected $fillable = [
         'nama_prioritas','sk_prioritas'

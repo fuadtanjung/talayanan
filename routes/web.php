@@ -20,8 +20,10 @@ Route::get('logout','LoginController@logout')->name('login.logout');
 Route::get('register','RegisterController@index')->name('register');
 Route::post('registerpost','RegisterController@input')->name('register.post');
 
+Route::get('list/role', 'ListController@listRole');
+
 Route::middleware('auth')->group(function () {
-    Route::group(['middleware' => ['checkRole:admin,pengguna']], function () {
+    Route::group(['middleware' => ['checkRole:admin,PPK,panitia,penyedia,Lain-lain,Auditor']], function () {
         Route::get('/', 'HomeController@index')->name('home');
     });
 
@@ -44,6 +46,7 @@ Route::middleware('auth')->group(function () {
             Route::get('dampak', 'ListController@listDampak');
             Route::get('prioritas', 'ListController@listPrioritas');
             Route::get('petugas', 'ListController@listPetugas');
+            Route::get('konfirmasi', 'ListController@listKonfirmasi');
         });
 
         Route::group(['prefix' => 'proses'], function () {
@@ -71,7 +74,7 @@ Route::middleware('auth')->group(function () {
             Route::post('delete/{id}', 'DampakController@delete');
         });
 
-        Route::group(['prefix' => 'user'], function(){
+        Route::group(['prefix' => 'userkl'], function(){
             Route::get('/','UserController@index');
             Route::get('data', 'UserController@ajaxTable');
             Route::post('input','UserController@input');
@@ -126,18 +129,51 @@ Route::middleware('auth')->group(function () {
             Route::post('edit/{id}', 'KategoriController@edit');
             Route::post('delete/{id}', 'KategoriController@delete');
         });
+
+        Route::group(['prefix' => 'konfirmasi'], function(){
+            Route::get('/','KonfirmasiController@index');
+            Route::get('data', 'KonfirmasiController@ajaxTable');
+            Route::post('input','KonfirmasiController@input');
+            Route::post('edit/{id}', 'KonfirmasiController@edit');
+            Route::post('delete/{id}', 'KonfirmasiController@delete');
+        });
+
+        Route::group(['prefix' => 'media'], function(){
+            Route::get('/','MediaController@index');
+            Route::get('data', 'MediaController@ajaxTable');
+            Route::post('input','MediaController@input');
+            Route::post('edit/{id}', 'MediaController@edit');
+            Route::post('delete/{id}', 'MediaController@delete');
+        });
+
+        Route::group(['prefix' => 'akun'], function(){
+            Route::get('/','MediaController@index');
+            Route::get('data', 'MediaController@ajaxTable');
+            Route::post('input','MediaController@input');
+            Route::post('edit/{id}', 'MediaController@edit');
+            Route::post('delete/{id}', 'MediaController@delete');
+        });
     });
 
-    Route::group(['middleware' => ['checkRole:pengguna']], function () {
+    Route::group(['middleware' => ['checkRole:PPK,panitia,penyedia,Lain-lain,Auditor']], function () {
 
         Route::group(['prefix' => 'user'], function () {
+
+            //diajukan
             Route::get('/', 'PengaduanController@index');
             Route::get('/tambah', 'PengaduanController@add');
             Route::get('data', 'PengaduanController@ajaxTable');
             Route::post('input', 'PengaduanController@input');
+            Route::post('edit/{id}', 'PengaduanController@edit');
             Route::post('delete/{id}', 'PengaduanController@delete');
+
+            //proses
+            Route::get('/process', 'PengaduanController@process');
+            Route::get('data2', 'PengaduanController@dataprocess');
+
+            //history
             Route::get('history', 'PengaduanController@history');
-            Route::get('datahistory', 'PengaduanController@datahistory');
+            Route::get('data3', 'PengaduanController@datahistory');
         });
     });
 });

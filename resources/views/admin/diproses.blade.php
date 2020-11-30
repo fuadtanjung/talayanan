@@ -62,13 +62,17 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
                                     <label>Kontak Pengguna</label>
-                                    <input type="text" class="form-control" id="kontak_pengguna" name="kontak_pengguna" required autofocus>
+                                    <input type="text" class="form-control" id="kontak_pengguna" name="kontak_pengguna" readonly>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
+                                    <label>User</label>
+                                    <input type="text" class="form-control" id="role" name="role" readonly>
+                                </div>
+                                <div class="col-sm-4">
                                     <label>Deskripsi</label>
-                                    <textarea class="form-control" id="deskripsi" name="deskripsi"></textarea>
+                                    <textarea class="form-control" id="deskripsi" name="deskripsi" readonly></textarea>
                                 </div>
                             </div>
                         </div>
@@ -76,28 +80,28 @@
                         <h5 class="text-white bg-info text-center">Klasifikasi</h5><br>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     <label>Tipe</label>
-                                    <select class="custom-select select2" id="tipe" name="tipe" auto required >
-                                        <option value="">Pilih Tipe</option>
+                                    <select data-placeholder="Pilih Tipe" id="tipe" name="tipe" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                        <option></option>
                                     </select>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     <label>Kategori</label>
-                                    <select class="custom-select select2" id="kategori" name="kategori" required>
-                                        <option value="">Pilih Kategori</option>
+                                    <select data-placeholder="Pilih Kategori" id="kategori" name="kategori" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                        <option></option>
                                     </select>
                                 </div>
-                                <div class="col-sm-3">
-                                    <label>User</label>
-                                    <select class="custom-select select2" required id="user" name="user">
-                                        <option value="">Pilih User</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-3">
+{{--                                <div class="col-sm-3">--}}
+{{--                                    <label>User</label>--}}
+{{--                                    <select class="custom-select select2" required id="user" name="user">--}}
+{{--                                        <option value="">Pilih User</option>--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+                                <div class="col-sm-4">
                                     <label>Jenis</label>
-                                    <select class="custom-select select2" required id="jenis" name="jenis">
-                                        <option value="">Pilih Jenis</option>
+                                    <select data-placeholder="Pilih Jenis" id="jenis" name="jenis" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                        <option></option>
                                     </select>
                                 </div>
                             </div>
@@ -106,56 +110,55 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <label>Urgensi</label>
-                                    <select class="custom-select select2" required id="urgensi" name="urgensi">
-                                        <option value="">Pilih Urgensi</option>
+                                    <select data-placeholder="Pilih Urgensi" id="urgensi" name="urgensi" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                        <option></option>
                                     </select>
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Dampak</label>
-                                    <select class="custom-select select2" required id="dampak" name="dampak">
-                                        <option value="">Pilih Dampak</option>
+                                    <select data-placeholder="Pilih Dampak" id="dampak" name="dampak" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                        <option></option>
                                     </select>
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Prioritas</label>
-                                    <select class="custom-select select2" required id="prioritas" name="prioritas">
-                                        <option value="">Pilih Prioritas</option>
+                                    <select data-placeholder="Pilih Prioritas" id="prioritas" name="prioritas" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                        <option></option>
                                     </select>
                                 </div>
                             </div>
                         </div>
 
-                        <h5 class="text-white bg-info text-center">Informasi Penanganan</h5><br>
+                        <h5 class="text-white bg-info text-center">Informasi Penanganan & Penyelesaian</h5><br>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <label>Petugas</label>
-                                    <select class="custom-select select2" required id="petugas" name="petugas">
-                                        <option value="">Pilih Petugas</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-6">
-                                    <h6>Keterangan</h6>
+{{--                                <div class="col-sm-6">--}}
+{{--                                    <label>Petugas</label>--}}
+{{--                                    <select class="custom-select select2" required id="petugas" name="petugas">--}}
+{{--                                        <option value="">Pilih Petugas</option>--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+                                <div class="col-sm-4">
+                                    <label>Keterangan</label>
                                     <textarea class="form-control" id="keterangan" name="keterangan"></textarea>
                                 </div>
-                            </div>
-                        </div>
-
-                        <h5 class="text-white bg-info text-center">Informasi Penyelesaian</h5><br>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h6>solusi</h6>
+                                <div class="col-sm-4">
+                                    <label>solusi</label>
                                     <textarea class="form-control" id="solusi" name="solusi"></textarea>
                                 </div>
-                                <div class="col-sm-6">
-                                    <h6>status konfirmasi kepada pengguna</h6>
-                                    <textarea class="form-control" id="konfirmasi" name="konfirmasi"></textarea>
+                                <div class="col-sm-4">
+                                    <label>status konfirmasi kepada pengguna</label>
+                                    <select data-placeholder="Pilih Konfirmasi" id="konfirmasi" name="konfirmasi" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                        <option></option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
+
+
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-link legitRipple" data-dismiss="modal">Tutup<span class="legitRipple-ripple" style="left: 59.2894%; top: 39.4737%; transform: translate3d(-50%, -50%, 0px); width: 225.475%; opacity: 0;"></span></button>
                     <button type="button" class="btn btn-primary legitRipple" aksi="input" id="submit_pengaduan">Simpan</button>
@@ -171,12 +174,12 @@
             $('#datatable').dataTable({
                 "ajax": "{{ url('/proses/data') }}",
                 "columns": [
-                    { "data": "nama_pengguna" },
-                    { "data": "kontak_pengguna" },
+                    { "data": "name" },
+                    { "data": "kontak" },
                     { "data": "deskripsi" },
                     { "data": "status" ,
-                        render:function(status){
-                                return '<span class="badge badge-success">Ditangani</span></td>';
+                        render:function(){
+                                return '<span class="badge badge-success">Diproses</span></td>'
                     }
                     },
                     { "data": "action" }
@@ -198,7 +201,14 @@
 
         function resetFormPengaduan() {
             $("#form_pengaduan")[0].reset();
-            $('#id_pengaduan').val("").change();
+            $('#no_tiket').val("").change();
+            $('#tipe').val("").change();
+            $('#kategori').val("").change();
+            $('#jenis').val("").change();
+            $('#urgensi').val("").change();
+            $('#dampak').val("").change();
+            $('#prioritas').val("").change();
+            $('#konfirmasi').val("").change();
         }
 
         $(window).on('load', function () {
@@ -217,9 +227,9 @@
                     buttonsStyling: false
                 }).then((result) => {
                     if (result.value) {
-                        var id_pengaduan = $("#submit_pengaduan").attr("idpengaduan");
+                        var no_tiket = $("#submit_pengaduan").attr("notiket");
                         $.ajax({
-                            url: "{{ url('/admin/edit') }}/" + id_pengaduan,
+                            url: "{{ url('/proses/edit') }}/" + no_tiket,
                             type: "post",
                             data: new FormData($('#form_pengaduan')[0]),
                             async: false,
@@ -281,13 +291,15 @@
             $('#datatable tbody').on('click', '#edit', function (e) {
                 var table = $('#datatable').DataTable();
                 var data = table.row($(this).parents('tr')).data();
-                $('#nama_pengguna').val(data.nama_pengguna);
+                $('#nama_pengguna').val(data.name);
                 $('#waktu_pelaporan').val(data.waktu_pelaporan);
-                $('#media_pelaporan').val(data.media_pelaporan);
-                $('#kontak_pengguna').val(data.kontak_pengguna);
+                $('#media_pelaporan').val(data.nama_media);
+                $('#kontak_pengguna').val(data.kontak);
+                $('#role').val(data.nama);
                 $('#deskripsi').val(data.deskripsi);
+                $('#tiket').val(data.no_tiket);
                 $("#submit_pengaduan").attr("aksi", "edit");
-                $('#submit_pengaduan').attr("idpengaduan", data.id_pengaduan);
+                $('#submit_pengaduan').attr("notiket", data.no_tiket);
                 $('#input_pengaduan').modal('toggle');
             });
 
@@ -303,6 +315,7 @@
                     })
                 }
             });
+
             $.ajax({
                 url: '{{ url('list/tipe') }}',
                 dataType: "json",
@@ -310,16 +323,6 @@
                     var tipe = jQuery.parseJSON(JSON.stringify(data));
                     $.each(tipe, function (k, v) {
                         $('#tipe').append($('<option>', {value: v.id_tipe}).text(v.nama_tipe))
-                    })
-                }
-            });
-            $.ajax({
-                url: '{{ url('list/user') }}',
-                dataType: "json",
-                success: function (data) {
-                    var user = jQuery.parseJSON(JSON.stringify(data));
-                    $.each(user, function (k, v) {
-                        $('#user').append($('<option>', {value: v.id_user}).text(v.nama_user))
                     })
                 }
             });
@@ -363,13 +366,14 @@
                     })
                 }
             });
+
             $.ajax({
-                url: '{{ url('list/petugas') }}',
+                url: '{{ url('list/konfirmasi') }}',
                 dataType: "json",
                 success: function (data) {
-                    var petugas = jQuery.parseJSON(JSON.stringify(data));
-                    $.each(petugas, function (k, v) {
-                        $('#petugas').append($('<option>', {value: v.id_petugas}).text(v.in_petugas))
+                    var konfirmasi = jQuery.parseJSON(JSON.stringify(data));
+                    $.each(konfirmasi, function (k, v) {
+                        $('#konfirmasi').append($('<option>', {value: v.id_konfirmasi}).text(v.nama_konfirmasi))
                     })
                 }
             });

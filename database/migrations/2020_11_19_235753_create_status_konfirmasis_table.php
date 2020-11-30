@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserklsTable extends Migration
+class CreateStatusKonfirmasisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateUserklsTable extends Migration
      */
     public function up()
     {
-        Schema::create('userkls', function (Blueprint $table) {
-            $table->bigIncrements('id_user');
-            $table->String('nama_user');
-            $table->String('sk_user');
+        Schema::create('status_konfirmasis', function (Blueprint $table) {
+            $table->bigIncrements('id_konfirmasi');
+            $table->string('nama_konfirmasi');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateUserklsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('userkls');
+        Schema::dropIfExists('status_konfirmasis');
     }
 }

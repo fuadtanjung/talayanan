@@ -23,8 +23,7 @@ class LoginController extends Controller
             'loginpassword' => 'required',
         ]);
 
-        $fieldType = filter_var($request->login, FILTER_VALIDATE_INT) ? 'nip' : 'username';
-        if(Auth::attempt([ $fieldType => $request->login, 'password' => $request->loginpassword]))
+        if(Auth::attempt([ 'email'=> $request->login, 'password' => $request->loginpassword]))
         {
             return redirect()->route('home')->with('success','Selamat datang');
         }

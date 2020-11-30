@@ -9,7 +9,7 @@ use Yajra\DataTables\Facades\DataTables;
 class JenisController extends Controller
 {
     public function index(){
-        return view('klasifikasi.jenis');
+        return view('admin.klasifikasi.jenis');
     }
 
     protected function  validasiData($data){
@@ -29,7 +29,7 @@ class JenisController extends Controller
         if ($validasi->passes()) {
             $jenis = new Jenis;
             $jenis->nama_jenis = $request->nama_jenis;
-            $jenis->sk_jenis = $request->singkatan;
+            $jenis->id_jenis = $request->singkatan;
 
             if($jenis->save()){
                 return json_encode(array("success"=>"Berhasil Menambahkan Data Jenis"));
@@ -66,7 +66,7 @@ class JenisController extends Controller
         if($validasi->passes()) {
             $jenis = Jenis::where('id_jenis', $id)->first();
             $jenis->nama_jenis = $request->nama_jenis;
-            $jenis->sk_jenis = $request->singkatan;
+            $jenis->id_jenis = $request->singkatan;
 
             if ($jenis->update()) {
                 return json_encode(array("success" => "Berhasil Merubah Data Jenis :)"));

@@ -24,18 +24,26 @@
 @yield('navbar')
 
     <!-- Core JS files -->
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/js/blockui.min.js') }}"></script>
-    <!-- /core JS files -->
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/js/blockui.min.js') }}"></script>
+<!-- /core JS files -->
 
-    <!-- Theme JS files -->
-    <script src="{{ asset('assets/js/uniform.min.js') }}"></script>
-    <script src="{{ asset('assets/js/prism.min.js') }}"></script>
-    <script src="{{ asset('plugin/js/sweet_alert.min.js') }}"></script>
-    <script src="{{ asset('plugin/js/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/app.js') }}"></script>
-    <script src="{{ asset('plugin/js/all.js') }}"></script>
+<!-- Theme JS files -->
+<script src="{{ asset('assets/js/uniform.min.js') }}"></script>
+<script src="{{ asset('assets/js/prism.min.js') }}"></script>
+<script src="{{ asset('assets/js/interactions.min.js') }}"></script>
+<script src="{{ asset('assets/js/select2.min.js') }}"></script>
+<script src="{{ asset('assets/js/d3.min.js') }}"></script>
+<script src="{{ asset('assets/js/d3_tooltip.js') }}"></script>
+<script src="{{ asset('plugin/js/sweet_alert.min.js') }}"></script>
+<script src="{{ asset('plugin/js/datatables.min.js') }}"></script>
+<script src="{{ asset('assets/js/app.js') }}"></script>
+<script src="{{ asset('plugin/js/all.js') }}"></script>
+<script src="{{ asset('assets/js/form_select2.js') }}"></script>
+<script src="{{ asset('assets/datatable/moment.min.js') }}"></script>
+<script src="{{ asset('assets/datatable/datetime.js') }}"></script>
+
     <!-- /theme JS files -->
     <script>
         const Toast = Swal.mixin({

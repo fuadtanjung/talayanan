@@ -1,88 +1,88 @@
 @extends('layouts.navbar')
 
 @section('header')
-    <h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Klasifikasi</span> - Tipe</h4>
+    <h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Klasifikasi</span> - Dampak</h4>
     <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
 @endsection
 
 @section('content')
-            <div class="card">
-                <div class="card-header header-elements-inline">
-                    <h5 class="card-title">Tipe</h5>
-                    <div class="header-elements">
-                        <div class="list-icons">
-                            <a class="list-icons-item" data-action="collapse"></a>
-                            <a class="list-icons-item" data-action="reload"></a>
-                        </div>
-                    </div>
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h4 class="card-title">Dampak</h4>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
                 </div>
-
-                <div class="card-body header-elements-sm-inline">
-                    <button type="button" class="btn bg-primary btn-labeled btn-labeled-left rounded-round" data-toggle="modal" data-target="#input_tipe">
-                        <b><i class="icon-plus-circle2"></i></b>
-                        Tambah
-                    </button>
-                </div>
-
-                <table class="table datatable-basic table-bordered table-hover" width="100%" id="datatable">
-                    <thead>
-                    <tr>
-                        <th>Nama </th>
-                        <th>Singkatan</th>
-                        <th class="text-center">Actions</th>
-                    </tr>
-                    </thead>
-                </table>
             </div>
+        </div>
 
-            <div id="input_tipe" class="modal fade" data-backdrop="false">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header bg-primary">
-                            <h6 class="modal-title" style="color: white">Input Tipe</h6>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
+        <div class="card-body header-elements-sm-inline">
+            <button type="button" class="btn bg-primary btn-labeled btn-labeled-left rounded-round" data-toggle="modal" data-target="#input_dampak">
+                <b><i class="icon-plus-circle2"></i></b>
+                Tambah
+            </button>
+        </div>
 
-                        <div class="modal-body">
-                            <form id="form_tipe" class="form-material">
-                                {{ csrf_field() }}
-                                <div class="row clearfix">
-                                    <div class="col-sm-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <h6>Nama Tipe</h6>
-                                                <input type="text" class="form-control" id="nama_tipe" name="nama_tipe">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <h6>Singkatan</h6>
-                                                <input type="text" class="form-control" id="sk_tipe" name="singkatan">
-                                            </div>
-                                        </div>
+        <table class="table datatable-basic table-bordered table-hover" width="100%" id="datatable">
+            <thead>
+            <tr>
+                <th>Nama </th>
+                <th>Singkatan</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div id="input_dampak" class="modal fade" data-backdrop="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h6 class="modal-title" style="color: white">Data Dampak</h6>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="form_dampak" class="form-material">
+                        {{ csrf_field() }}
+                        <div class="row clearfix">
+                            <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <h6>Nama Dampak</h6>
+                                        <input type="text" class="form-control" id="nama_dampak" name="nama_dampak">
                                     </div>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <h6>Singkatan</h6>
+                                        <input type="text" class="form-control" id="sk_dampak" name="singkatan">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </form>
+                </div>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-link legitRipple" data-dismiss="modal">Tutup<span class="legitRipple-ripple" style="left: 59.2894%; top: 39.4737%; transform: translate3d(-50%, -50%, 0px); width: 225.475%; opacity: 0;"></span></button>
-                            <button type="button" class="btn btn-primary legitRipple" aksi="input" id="submit_tipe">Simpan</button>
-                        </div>
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link legitRipple" data-dismiss="modal">Tutup<span class="legitRipple-ripple" style="left: 59.2894%; top: 39.4737%; transform: translate3d(-50%, -50%, 0px); width: 225.475%; opacity: 0;"></span></button>
+                    <button type="button" class="btn btn-primary legitRipple" aksi="input" id="submit_dampak">Simpan</button>
                 </div>
             </div>
+        </div>
+    </div>
 @endsection
 @section('js')
     <script type="text/javascript">
         function loadData() {
             $('#datatable').dataTable({
-                "ajax": "{{ url('/tipe/data') }}",
+                "ajax": "{{ url('/dampak/data') }}",
                 "columns": [
-                    { "data": "nama_tipe" },
-                    { "data": "sk_tipe" },
+                    { "data": "nama_dampak" },
+                    { "data": "id_dampak" },
                     { "data": "action" }
                 ],
                 scrollX: true,
@@ -98,19 +98,19 @@
             });
         }
 
-        function resetFormTipe() {
-            $("#form_tipe")[0].reset();
+        function resetFormDampak() {
+            $("#form_dampak")[0].reset();
         }
 
         $(window).on('load', function () {
             loadData();
-            $('#submit_tipe').click(function () {
-                var aksi = $("#submit_tipe").attr("aksi");
+            $('#submit_dampak').click(function () {
+                var aksi = $("#submit_dampak").attr("aksi");
                 if(aksi=="input"){
                     $.ajax({
-                        url: "{{ url('/tipe/input') }}",
+                        url: "{{ url('/dampak/input') }}",
                         type: "post",
-                        data: new FormData($('#form_tipe')[0]),
+                        data: new FormData($('#form_dampak')[0]),
                         cache: false,
                         contentType: false,
                         processData: false,
@@ -131,8 +131,8 @@
                                     position: 'top-right',
                                     text: pesan.success,
                                 });
-                                resetFormTipe();
-                                $('#input_tipe').modal('toggle');
+                                resetFormDampak();
+                                $('#input_dampak').modal('toggle');
                                 $('#datatable').DataTable().destroy();
                                 loadData();
                             }else {
@@ -153,11 +153,11 @@
                     });
                 }
                 else if(aksi=="edit"){
-                    var id_tipe = $("#submit_tipe").attr("idtipe");
+                    var id_dampak = $("#submit_dampak").attr("iddampak");
                     $.ajax({
-                        url: "{{ url('/tipe/edit') }}/"+id_tipe,
+                        url: "{{ url('/dampak/edit') }}/"+id_dampak,
                         type: "post",
-                        data: new FormData($('#form_tipe')[0]),
+                        data: new FormData($('#form_dampak')[0]),
                         cache: false,
                         contentType: false,
                         processData: false,
@@ -178,19 +178,20 @@
                                     position: 'top-right',
                                     text: pesan.success,
                                 });
-                                resetFormTipe();
-                                $('#input_tipe').modal('toggle');
+                                resetFormDampak();
+                                $('#input_dampak').modal('toggle');
                                 $('#datatable').DataTable().destroy();
                                 loadData();
-
                             }else {
                                 Toast.fire({
                                     type: 'warning',
                                     position: 'top-right',
                                     text: 'Can\'t retrieve any data from server',
                                 });
-                                $('#submit_tipe').attr("data-aksi","input");
+                                $('#submit_dampak').attr("data-aksi","input");
                             }
+
+
                         },
                         fail: function () {
                             Toast.fire({
@@ -206,11 +207,11 @@
             $('#datatable tbody').on('click', '#edit', function (e) {
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
-                $('#nama_tipe').val(data.nama_tipe).change();
-                $('#sk_tipe').val(data.sk_tipe).change();
-                $("#submit_tipe").attr("aksi","edit");
-                $('#submit_tipe').attr("idtipe",data.id_tipe);
-                $('#input_tipe').modal('toggle');
+                $('#nama_dampak').val(data.nama_dampak).change();
+                $('#sk_dampak').val(data.id_dampak).change();
+                $("#submit_dampak").attr("aksi","edit");
+                $('#submit_dampak').attr("iddampak",data.id_dampak);
+                $('#input_dampak').modal('toggle');
             } );
 
 
@@ -218,7 +219,7 @@
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
                 swal.fire({
-                    title: 'Are you sure?',
+                    title: 'Apakah Anda Yakin?',
                     text: "Anda tidak akan dapat mengembalikan ini!",
                     type: 'warning',
                     showCancelButton: true,
@@ -232,7 +233,7 @@
                 }).then((result) => {
                     if (result.value) {
                         $.ajax({
-                            url: "{{ url('/tipe/delete/') }}/" + data.id_tipe,
+                            url: "{{ url('/dampak/delete/') }}/" + data.id_dampak,
                             type: "post",
                             data: {
                                 "_token": "{{ csrf_token() }}",
@@ -263,12 +264,13 @@
             });
 
 
-            $('#input_tipe').on('hidden.bs.modal', function () {
-                resetFormTipe();
-                $("#submit_tipe").attr("aksi","input");
-                $('#submit_tipe').removeAttr("idtipe");
+            $('#input_dampak').on('hidden.bs.modal', function () {
+                resetFormDampak();
+                $("#submit_dampak").attr("aksi","input");
+                $('#submit_dampak').removeAttr("iddampak");
             });
         })
     </script>
+
 @endsection
 

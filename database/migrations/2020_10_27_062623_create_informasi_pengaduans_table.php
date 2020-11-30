@@ -14,20 +14,16 @@ class CreateInformasiPengaduansTable extends Migration
     public function up()
     {
         Schema::create('informasi_pengaduans', function (Blueprint $table) {
-            $table->bigIncrements('id_pengaduan');
-            $table->unsignedBigInteger('users_id');
-            $table->unsignedBigInteger('dampak_id')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('jenis_id')->nullable();
-            $table->unsignedBigInteger('urgensi_id')->nullable();
-            $table->unsignedBigInteger('prioritas_id')->nullable();
-            $table->unsignedBigInteger('tipe_id')->nullable();
-            $table->unsignedBigInteger('kategori_id')->nullable();
-            $table->unsignedBigInteger('petugas_id')->nullable();
-            $table->string('no_tiket')->nullable();
-            $table->string('nama_pengguna');
-            $table->string('kontak_pengguna');
-            $table->string('media_pelaporan')->nullable();
+            $table->string('no_tiket');
+            $table->unsignedBigInteger('user_id');
+            $table->string('dampak_id')->nullable();
+            $table->string('jenis_id')->nullable();
+            $table->string('urgensi_id')->nullable();
+            $table->string('prioritas_id')->nullable();
+            $table->string('tipe_id')->nullable();
+            $table->string('kategori_id')->nullable();
+            $table->unsignedBigInteger('konfirmasi_id')->nullable();
+            $table->unsignedBigInteger('media_id')->nullable();
             $table->date('waktu_pelaporan');
             $table->string('deskripsi');
             $table->string('status')->nullable();
@@ -38,15 +34,7 @@ class CreateInformasiPengaduansTable extends Migration
             $table->string('status_pengguna')->nullable();
             $table->timestamps();
 
-            $table->foreign('dampak_id')->references('id_dampak')->on('dampaks')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('user_id')->references('id_user')->on('userkls')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('jenis_id')->references('id_jenis')->on('jenis')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('urgensi_id')->references('id_urgensi')->on('urgensis')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('prioritas_id')->references('id_prioritas')->on('prioritas')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('tipe_id')->references('id_tipe')->on('tipes')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('kategori_id')->references('id_kategori')->on('kategoris')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('petugas_id')->references('id_petugas')->on('petugas')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->primary('no_tiket');
         });
     }
 

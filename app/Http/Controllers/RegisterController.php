@@ -22,22 +22,22 @@ class RegisterController extends Controller
             'nip' => 'required|unique:users',
             'nama' => 'required',
             'kontak' => 'required',
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required',
+            'role' => 'required',
         ], $pesan);
     }
 
 
     public function input(Request $request){
         $validasi = $this->validasiData($request->all());
-        $role = 2;
         if($validasi->passes()){
             $user = new User();
             $user->name = $request->nama;
             $user->nip = $request->nip;
             $user->kontak = $request->kontak;
-            $user->username= $request->username;
-            $user->role_id = $role;
+            $user->email= $request->email;
+            $user->role_id = $request->role;
             $user->password = bcrypt($request->password);
             $user->remember_token = Str::random(30);
 

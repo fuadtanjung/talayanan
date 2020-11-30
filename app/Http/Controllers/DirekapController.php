@@ -3,25 +3,40 @@
 namespace App\Http\Controllers;
 
 use App\Models\InformasiPengaduan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class DirekapController extends Controller
 {
     public function index(){
-        return view('direkap');
+        $names = User::where('role_id','=','adm')->pluck('name');
+        $initials = [];
+        foreach($names as $name) {
+            $nameParts = explode(' ', trim($name));
+            $firstName = array_shift($nameParts);
+            $lastName = array_pop($nameParts);
+            $initials[$name] = (
+                mb_substr($firstName,0,1) .
+                mb_substr($lastName,0,1)
+            );
+        }
+        return view('admin.direkap',(['initials'=>$initials]));
     }
 
     public function ajaxTable(){
-        $informasi_pelaporan =  InformasiPengaduan::with('tipe')
-            ->with('kategori')
-            ->with('prioritas')
-            ->with('petugas')
-            ->with('jenis')
-            ->with('urgensi')
-            ->with('userkl')
-            ->with('dampak')
-            ->Where('status','difasilitasi')->get();
+        $informasi_pelaporan =  InformasiPengaduan:: join ('tipes','informasi_pengaduans.tipe_id','=','tipes.id_tipe')
+            ->join ('dampaks','informasi_pengaduans.dampak_id','=','dampaks.id_dampak')
+            ->join ('jenis','informasi_pengaduans.jenis_id','=','jenis.id_jenis')
+            ->join ('kategoris','informasi_pengaduans.kategori_id','=','kategoris.id_kategori')
+            ->join ('prioritas','informasi_pengaduans.prioritas_id','=','prioritas.id_prioritas')
+            ->join ('urgensis','informasi_pengaduans.urgensi_id','=','urgensis.id_urgensi')
+            ->join ('users','informasi_pengaduans.user_id','=','users.id')
+            ->join ('roles','users.role_id','=','roles.id')
+            ->join ('media','informasi_pengaduans.media_id','=','media.id_media')
+            ->join ('status_konfirmasis','informasi_pengaduans.konfirmasi_id','=','status_konfirmasis.id_konfirmasi')
+            ->where('status','=','difasilitasi')
+            ->get();
         try {
             return Datatables::of($informasi_pelaporan)
                 ->addColumn('action', function ($informasi) {
@@ -67,11 +82,9 @@ class DirekapController extends Controller
     {
         $date = date('Y-m_d');
         $status = 'difasilitasi';
-        $tiket = date('Y') . sprintf("%03s", $no);
         $validasi = $this->validasiData($request->all());
         if ($validasi->passes()) {
             $informasi_pelaporan = new InformasiPengaduan;
-            $informasi_pelaporan->no_tiket = $request->$tiket;
             $informasi_pelaporan->nama_pengguna = $request->nama_pengguna;
             $informasi_pelaporan->kontak_pengguna = $request->kontak_pengguna;
             $informasi_pelaporan->media_pelaporan = $request->media_pelaporan;
@@ -94,6 +107,9 @@ class DirekapController extends Controller
             $informasi_pelaporan->tgl_selesai = $date;
 
             $informasi_pelaporan->save();
+
+
+
             if ($informasi_pelaporan->update()) {
                 return json_encode(array("success" => "Berhasil Merubah Data Informasi :)"));
             } else {
@@ -110,7 +126,7 @@ class DirekapController extends Controller
     }
 
     public function delete($id){
-        $informasi_pelaporan = InformasiPengaduan::where('id_pengaduan', $id)->first();
+        $informasi_pelaporan = InformasiPengaduan::where('no_tiket', $id)->first();
         if($informasi_pelaporan->delete()){
             return json_encode(array("success"=>"Berhasil Menghapus Data Pengaduan :)"));
         }else{
@@ -120,18 +136,23 @@ class DirekapController extends Controller
 
     public function laporan($id){
         $status = "difasilitasi";
-        $informasi_pelaporan = InformasiPengaduan::where('status',$status)
-            ->where ('id_pengaduan',$id)
-            ->join ('tipes','informasi_pengaduans.tipe_id','=','tipes.id_tipe')
-            ->join ('dampaks','informasi_pengaduans.dampak_id','=','dampaks.id_dampak')
-            ->join ('jenis','informasi_pengaduans.jenis_id','=','jenis.id_jenis')
-            ->join ('kategoris','informasi_pengaduans.kategori_id','=','kategoris.id_kategori')
-            ->join ('petugas','informasi_pengaduans.petugas_id','=','petugas.id_petugas')
-            ->join ('prioritas','informasi_pengaduans.prioritas_id','=','prioritas.id_prioritas')
-            ->join ('urgensis','informasi_pengaduans.urgensi_id','=','urgensis.id_urgensi')
-            ->join ('userkls','informasi_pengaduans.user_id','=','userkls.id_user')
+        $informasi_pelaporan = InformasiPengaduan::join ('users','informasi_pengaduans.user_id','=','users.id')
+            ->join ('media','informasi_pengaduans.media_id','=','media.id_media')
+            ->join ('status_konfirmasis','informasi_pengaduans.konfirmasi_id','=','status_konfirmasis.id_konfirmasi')
+            ->where('status',$status)->where ('no_tiket',$id)
             ->get();
-        return view('hasilprint', compact('informasi_pelaporan'));
+        $names = User::where('role_id','=','adm')->pluck('name');
+        $initials = [];
+        foreach($names as $name) {
+            $nameParts = explode(' ', trim($name));
+            $firstName = array_shift($nameParts);
+            $lastName = array_pop($nameParts);
+            $initials[$name] = (
+                mb_substr($firstName,0,1) .
+                mb_substr($lastName,0,1)
+            );
+        }
+        return view('admin.hasilprint',(['informasi_pelaporan'=>$informasi_pelaporan,'initials'=>$initials]));
     }
 
     public function semua(Request $request)
@@ -140,31 +161,40 @@ class DirekapController extends Controller
         $akhir = $request->end;
         $status = "difasilitasi";
         if($request->filled('start') && $request->filled('end')){
-            $informasi_pelaporan = InformasiPengaduan::where('status',$status)
-                ->join ('tipes','informasi_pengaduans.tipe_id','=','tipes.id_tipe')
-                ->join ('dampaks','informasi_pengaduans.dampak_id','=','dampaks.id_dampak')
-                ->join ('jenis','informasi_pengaduans.jenis_id','=','jenis.id_jenis')
-                ->join ('kategoris','informasi_pengaduans.kategori_id','=','kategoris.id_kategori')
-                ->join ('petugas','informasi_pengaduans.petugas_id','=','petugas.id_petugas')
-                ->join ('prioritas','informasi_pengaduans.prioritas_id','=','prioritas.id_prioritas')
-                ->join ('urgensis','informasi_pengaduans.urgensi_id','=','urgensis.id_urgensi')
-                ->join ('userkls','informasi_pengaduans.user_id','=','userkls.id_user')
+            $informasi_pelaporan = InformasiPengaduan::join ('users','informasi_pengaduans.user_id','=','users.id')
+                ->join ('media','informasi_pengaduans.media_id','=','media.id_media')
+                ->join ('status_konfirmasis','informasi_pengaduans.konfirmasi_id','=','status_konfirmasis.id_konfirmasi')
+                ->where('status',$status)
                 ->whereBetween('tgl_selesai', [$mulai, $akhir])
                 ->get();
+            $names = User::where('role_id','=','adm')->pluck('name');
+            $initials = [];
+            foreach($names as $name) {
+                $nameParts = explode(' ', trim($name));
+                $firstName = array_shift($nameParts);
+                $lastName = array_pop($nameParts);
+                $initials[$name] = (
+                    mb_substr($firstName,0,1) .
+                    mb_substr($lastName,0,1)
+                );
+            }
         }else{
-            $informasi_pelaporan = InformasiPengaduan::where('status',$status)
-                ->join ('tipes','informasi_pengaduans.tipe_id','=','tipes.id_tipe')
-                ->join ('dampaks','informasi_pengaduans.dampak_id','=','dampaks.id_dampak')
-                ->join ('jenis','informasi_pengaduans.jenis_id','=','jenis.id_jenis')
-                ->join ('kategoris','informasi_pengaduans.kategori_id','=','kategoris.id_kategori')
-                ->join ('petugas','informasi_pengaduans.petugas_id','=','petugas.id_petugas')
-                ->join ('prioritas','informasi_pengaduans.prioritas_id','=','prioritas.id_prioritas')
-                ->join ('urgensis','informasi_pengaduans.urgensi_id','=','urgensis.id_urgensi')
-                ->join ('userkls','informasi_pengaduans.user_id','=','userkls.id_user')
+            $informasi_pelaporan = InformasiPengaduan::join ('users','informasi_pengaduans.user_id','=','users.id')
+                ->join ('media','informasi_pengaduans.media_id','=','media.id_media')
+                ->join ('status_konfirmasis','informasi_pengaduans.konfirmasi_id','=','status_konfirmasis.id_konfirmasi')
                 ->get();
+            $names = User::where('role_id','=','adm')->pluck('name');
+            $initials = [];
+            foreach($names as $name) {
+                $nameParts = explode(' ', trim($name));
+                $firstName = array_shift($nameParts);
+                $lastName = array_pop($nameParts);
+                $initials[$name] = (
+                    mb_substr($firstName,0,1) .
+                    mb_substr($lastName,0,1)
+                );
+            }
         }
-        return view('hasilprint', compact('informasi_pelaporan'));
+        return view('admin.hasilprint',(['informasi_pelaporan'=>$informasi_pelaporan,'initials'=>$initials]));
     }
-
-
 }

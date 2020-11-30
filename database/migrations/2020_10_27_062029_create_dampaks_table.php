@@ -14,9 +14,10 @@ class CreateDampaksTable extends Migration
     public function up()
     {
         Schema::create('dampaks', function (Blueprint $table) {
-            $table->bigIncrements('id_dampak');
+            $table->string('id_dampak');
             $table->String('nama_dampak');
-            $table->String('sk_dampak');
+
+            $table->primary('id_dampak');
         });
     }
 

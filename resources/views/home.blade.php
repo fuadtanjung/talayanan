@@ -6,24 +6,147 @@
     @endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+        <div class="card bg-dark">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h2 class="text-primary">Selamat Datang Di Aplikasi Pengaduan.</h2>
+                        <p class="text-gray-700">Aplikasi ini digunakan agar memudahkan dalam penyampaian pengaduan. </p>
+                    </div>
+                    <div>
+                        <img class="img-fluid px-xl-4 mt-xxl-n5" src="https://www.padang.go.id/assets/img/logo1.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- Simple statistics -->
+        @if ( auth()->user()->role->nama != "admin")
+    <div class="row">
+        <div class="col-sm-6 col-xl-3">
+            <div class="card card-body bg-primary-400 has-bg-image">
+                <div class="media">
+                    <div class="media-body">
+                        <h3 class="mb-0">{{ count($total) }}</h3>
+                        <span class="text-uppercase font-size-xs">total <br> pengaduan</span>
+                    </div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    {{ __('You are logged in!') }}
+                    <div class="ml-3 align-self-center">
+                        <i class="icon-bubbles4 icon-3x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5 col-xl-3">
+            <div class="card card-body bg-danger-400 has-bg-image">
+                <div class="media">
+                    <div class="media-body">
+                        <h3 class="mb-0">{{ count($diajukan) }}</h3>
+                        <span class="text-uppercase font-size-xs">pengaduan diajukan</span>
+                    </div>
+
+                    <div class="ml-3 align-self-center">
+                        <i class="icon-newspaper icon-3x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5 col-xl-3">
+            <div class="card card-body bg-info-400 has-bg-image">
+                <div class="media">
+                    <div class="media-body">
+                        <h3 class="mb-0">{{ count($diproses) }}</h3>
+                        <span class="text-uppercase font-size-xs">pengaduan diproses</span>
+                    </div>
+
+                    <div class="ml-3 align-self-center">
+                        <i class="icon-inbox icon-3x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5 col-xl-3">
+            <div class="card card-body bg-indigo-400 has-bg-image">
+                <div class="media">
+                    <div class="media-body">
+                        <h3 class="mb-0">{{ count($difasilitasi) }}</h3>
+                        <span class="text-uppercase font-size-xs">pengaduan selesai</span>
+                    </div>
+
+                    <div class="ml-3 align-self-center">
+                        <i class="icon-task icon-3x opacity-75"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    @endif
+
+        @if ( auth()->user()->role->nama == "admin")
+    <div class="row">
+        <div class="col-sm-6 col-xl-3">
+            <div class="card card-body bg-primary-400 has-bg-image">
+                <div class="media">
+                    <div class="media-body">
+                        <h3 class="mb-0">{{ count($admtotal) }}</h3>
+                        <span class="text-uppercase font-size-xs">total <br> pengaduan</span>
+                    </div>
+
+                    <div class="ml-3 align-self-center">
+                        <i class="icon-bubbles4 icon-3x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5 col-xl-3">
+            <div class="card card-body bg-danger-400 has-bg-image">
+                <div class="media">
+                    <div class="media-body">
+                        <h3 class="mb-0">{{ count($admdiajukan) }}</h3>
+                        <span class="text-uppercase font-size-xs">pengaduan diajukan</span>
+                    </div>
+
+                    <div class="ml-3 align-self-center">
+                        <i class="icon-newspaper icon-3x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5 col-xl-3">
+            <div class="card card-body bg-info-400 has-bg-image">
+                <div class="media">
+                    <div class="media-body">
+                        <h3 class="mb-0">{{ count($admdiproses) }}</h3>
+                        <span class="text-uppercase font-size-xs">pengaduan diproses</span>
+                    </div>
+
+                    <div class="ml-3 align-self-center">
+                        <i class="icon-inbox icon-3x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5 col-xl-3">
+            <div class="card card-body bg-indigo-400 has-bg-image">
+                <div class="media">
+                    <div class="media-body">
+                        <h3 class="mb-0">{{ count($admdifasilitasi) }}</h3>
+                        <span class="text-uppercase font-size-xs">pengaduan selesai</span>
+                    </div>
+
+                    <div class="ml-3 align-self-center">
+                        <i class="icon-task icon-3x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
 @endsection
 
 @section('js')

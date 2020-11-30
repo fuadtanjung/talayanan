@@ -41,16 +41,12 @@
                 "ajax": "{{ url('/admin/data') }}",
                 "columns": [
                     { "data": "no_tiket" },
-                    { "data": "nama_pengguna" },
-                    { "data": "kontak_pengguna" },
+                    { "data": "name" },
+                    { "data": "kontak" },
                     { "data": "deskripsi" },
-                    { "data": "status",
-                        render:function(status){
-                            if(status == 'diajukan'){
+                    { "data": "nama_status",
+                        render:function(){
                                 return '<span class="badge badge-info">Diajukan</span></td>';
-                            }else{
-                                return '<span class="badge badge-success">Ditangani</span></td>';
-                            }
                         }
                     },
                     { "data": "action" }
@@ -99,7 +95,7 @@
                 }).then((result) =>
                 {  if (result.value) {
                     $.ajax({
-                        url: "{{ url('/admin/change') }}/"+data.id_pengaduan,
+                        url: "{{ url('/admin/change') }}/"+data.no_tiket,
                         type: "POST",
                         data: {
                             "_token": "{{ csrf_token() }}",
@@ -130,13 +126,11 @@
             $('#datatable tbody').on('click', '#edit', function (e) {
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
-                $('#nama_pengguna').val(data.nama_pengguna);
+                $('#nama_pengguna').val(data.name);
                 $('#waktu_pelaporan').val(data.waktu_pelaporan);
-                $('#media_pelaporan').val(data.media_pelaporan);
-                $('#kontak_pengguna').val(data.kontak_pengguna);
+                $('#media_pelaporan').val(data.nama_media);
+                $('#kontak_pengguna').val(data.kontak);
                 $('#deskripsi').val(data.deskripsi).change();
-                $("#submit_pengaduan").attr("aksi","edit");
-                $('#submit_pengaduan').attr("idpelaporan",data.id_pengaduan);
                 $('#input_pengaduan').modal('toggle');
             } );
 
@@ -159,7 +153,7 @@
                 }).then((result) => {
                     if (result.value) {
                         $.ajax({
-                            url: "{{ url('/admin/delete/') }}/" + data.id_pengaduan,
+                            url: "{{ url('/admin/delete/') }}/" + data.no_tiket,
                             type: "post",
                             data: {
                                 "_token": "{{ csrf_token() }}",

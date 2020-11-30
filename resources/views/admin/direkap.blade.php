@@ -127,7 +127,9 @@
                             <div class="row">
                                 <div class="col-sm-3">
                                     <label>Petugas</label>
-                                    <input type="text" class="form-control" id="det_petugas" name="det_petugas">
+                                    @foreach($initials AS $a)
+                                    <input type="text" class="form-control" id="det_petugas" name="det_petugas" value="{{ $a }}">
+                                    @endforeach
                                 </div>
                                 <div class="col-sm-3">
                                     <label>Status</label>
@@ -187,6 +189,8 @@
         </div>
         <!-- /sidebar mobile toggler -->
 
+
+
             <!-- Sidebar search -->
             <div class="card">
                 <div class="card-header bg-transparent header-elements-inline">
@@ -198,7 +202,13 @@
                     </div>
                 </div>
 
+
+
+
                 <div class="card-body">
+                    <div class="alert alert-info bg-white alert-styled-left">
+                        <font size="1">Jika Anda Tidak Memasukkan Tanggal. Maka seluruh Laporan pengaduan akan di print</font>
+                    </div>
                     <form action="{{ url('selesai/filter')}}" target="_blank" id="form_validation" class="form-material" method="post">
                         {{ csrf_field() }}
                         <h6>Dari</h6>
@@ -228,8 +238,8 @@
             $('#datatable').dataTable({
                 "ajax": "{{ url('/selesai/data') }}",
                 "columns": [
-                    { "data": "nama_pengguna" },
-                    { "data": "kontak_pengguna" },
+                    { "data": "name" },
+                    { "data": "kontak" },
                     { "data": "deskripsi" },
                     { "data": "status",},
                     { "data": "action" }
@@ -316,32 +326,32 @@
             $('#datatable tbody').on('click', '#edit', function (e) {
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
-                $('#det_nama_pengguna').val(data.nama_pengguna);
+                $('#det_nama_pengguna').val(data.name);
                 $('#det_waktu_pelaporan').val(data.waktu_pelaporan);
-                $('#det_media_pelaporan').val(data.media_pelaporan);
-                $('#det_kontak_pengguna').val(data.kontak_pengguna);
+                $('#det_media_pelaporan').val(data.nama_media);
+                $('#det_kontak_pengguna').val(data.kontak);
                 $('#det_deskripsi').val(data.deskripsi);
-                $('#det_tipe').val(data.tipe.nama_tipe);
-                $('#det_kategori').val(data.kategori.nama_kategori);
-                $('#det_prioritas').val(data.prioritas.nama_prioritas);
-                $('#det_dampak').val(data.dampak.nama_dampak);
-                $('#det_jenis').val(data.jenis.nama_jenis);
-                $('#det_user').val(data.userkl.nama_user);
-                $('#det_urgensi').val(data.urgensi.nama_urgensi);
-                $('#det_petugas').val(data.petugas.in_petugas);
+                $('#det_tipe').val(data.nama_tipe);
+                $('#det_kategori').val(data.nama_kategori);
+                $('#det_prioritas').val(data.nama_prioritas);
+                $('#det_dampak').val(data.nama_dampak);
+                $('#det_jenis').val(data.nama_jenis);
+                $('#det_user').val(data.nama);
+                $('#det_urgensi').val(data.nama_urgensi);
+                // $('#det_petugas').val(data.petugas.in_petugas);
                 $('#det_status').val(data.status);
                 $('#det_keterangan').val(data.keterangan);
                 $('#det_tgl_pemuktahiran').val(data.tgl_pemuktahiran);
                 $('#det_solusi').val(data.solusi);
                 $('#det_tgl_penyelesaian').val(data.tgl_selesai);
-                $('#det_konfirmasi').val(data.status_pengguna);
+                $('#det_konfirmasi').val(data.nama_konfirmasi);
                 $('#detail_pengaduan').modal('toggle');
             } );
 
             $('#datatable tbody').on('click', '#print', function (e) {
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
-                var id = data.id_pengaduan;
+                var id = data.no_tiket;
                 window.open("{{ url('/selesai/print/')}}/"+id,'_blank');
             } );
 
@@ -415,16 +425,16 @@
                     })
                 }
             });
-            $.ajax({
-                url: '{{ url('list/user') }}',
-                dataType: "json",
-                success: function (data) {
-                    var user = jQuery.parseJSON(JSON.stringify(data));
-                    $.each(user, function (k, v) {
-                        $('#user').append($('<option>', {value: v.id_user}).text(v.nama_user))
-                    })
-                }
-            });
+            {{--$.ajax({--}}
+            {{--    url: '{{ url('list/user') }}',--}}
+            {{--    dataType: "json",--}}
+            {{--    success: function (data) {--}}
+            {{--        var user = jQuery.parseJSON(JSON.stringify(data));--}}
+            {{--        $.each(user, function (k, v) {--}}
+            {{--            $('#user').append($('<option>', {value: v.id_user}).text(v.nama_user))--}}
+            {{--        })--}}
+            {{--    }--}}
+            {{--});--}}
             $.ajax({
                 url: '{{ url('list/urgensi') }}',
                 dataType: "json",
@@ -465,16 +475,16 @@
                     })
                 }
             });
-            $.ajax({
-                url: '{{ url('list/petugas') }}',
-                dataType: "json",
-                success: function (data) {
-                    var petugas = jQuery.parseJSON(JSON.stringify(data));
-                    $.each(petugas, function (k, v) {
-                        $('#petugas').append($('<option>', {value: v.id_petugas}).text(v.in_petugas))
-                    })
-                }
-            });
+            {{--$.ajax({--}}
+            {{--    url: '{{ url('list/petugas') }}',--}}
+            {{--    dataType: "json",--}}
+            {{--    success: function (data) {--}}
+            {{--        var petugas = jQuery.parseJSON(JSON.stringify(data));--}}
+            {{--        $.each(petugas, function (k, v) {--}}
+            {{--            $('#petugas').append($('<option>', {value: v.id_petugas}).text(v.in_petugas))--}}
+            {{--        })--}}
+            {{--    }--}}
+            {{--});--}}
 
             {{--BATAS MENAMPILKAN LIST--}}
 

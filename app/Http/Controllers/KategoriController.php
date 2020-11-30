@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InformasiPengaduan;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -9,7 +10,7 @@ use Yajra\DataTables\Facades\DataTables;
 class KategoriController extends Controller
 {
     public function index(){
-        return view('klasifikasi.kategori');
+        return view('admin.klasifikasi.kategori');
     }
 
     protected function  validasiData($data){
@@ -29,7 +30,7 @@ class KategoriController extends Controller
         if ($validasi->passes()) {
             $kategori = new Kategori;
             $kategori->nama_kategori = $request->nama_kategori;
-            $kategori->sk_kategori = $request->singkatan;
+            $kategori->id_kategori = $request->singkatan;
 
             if($kategori->save()){
                 return json_encode(array("success"=>"Berhasil Menambahkan Data Kategori"));
@@ -66,7 +67,7 @@ class KategoriController extends Controller
         if($validasi->passes()) {
             $kategori = Kategori::where('id_kategori', $id)->first();
             $kategori->nama_kategori = $request->nama_kategori;
-            $kategori->sk_kategori = $request->singkatan;
+            $kategori->id_kategori = $request->singkatan;
 
             if ($kategori->update()) {
                 return json_encode(array("success" => "Berhasil Merubah Data Kategori :)"));
@@ -84,11 +85,15 @@ class KategoriController extends Controller
     }
 
     public function delete($id){
-        $kategori = Kategori::where('id_kategori', $id)->first();
-        if($kategori->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Kategori :)"));
+        if (InformasiPengaduan::where('kategori_id',$id)->count() == 0) {
+            $kategori = Kategori::where('id_kategori', $id)->first();
+            if ($kategori->delete()) {
+                return json_encode(array("success" => "Berhasil Menghapus Data Kategori :)"));
+            } else {
+                return json_encode(array("error" => "Gagal Menghapus Data Kategori :("));
+            }
         }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Kategori :("));
+            return json_encode(array("error"=>"Gagal Data Sedang Di Pakai"));
         }
     }
 }

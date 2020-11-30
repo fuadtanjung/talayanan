@@ -14,9 +14,10 @@ class CreateJenisTable extends Migration
     public function up()
     {
         Schema::create('jenis', function (Blueprint $table) {
-            $table->bigIncrements('id_jenis');
+            $table->string('id_jenis');
             $table->String('nama_jenis');
-            $table->String('sk_jenis');
+
+            $table->primary('id_jenis');
         });
     }
 

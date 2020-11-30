@@ -83,7 +83,7 @@
                 "ajax": "{{ url('/kategori/data') }}",
                 "columns": [
                     { "data": "nama_kategori" },
-                    { "data": "sk_kategori" },
+                    { "data": "id_kategori" },
                     { "data": "action" }
                 ],
                 scrollX: true,
@@ -210,7 +210,7 @@
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
                 $('#nama_kategori').val(data.nama_kategori).change();
-                $('#sk_kategori').val(data.sk_kategori).change();
+                $('#sk_kategori').val(data.id_kategori).change();
                 $("#submit_kategori").attr("aksi","edit");
                 $('#submit_kategori').attr("idkategori",data.id_kategori);
                 $('#input_kategori').modal('toggle');

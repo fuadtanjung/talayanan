@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dampak;
+use App\Models\InformasiPengaduan;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class DampakController extends Controller
 {
     public function index(){
-        return view('klasifikasi.dampak');
+        return view('admin.klasifikasi.dampak');
     }
 
     protected function  validasiData($data){
@@ -29,7 +30,7 @@ class DampakController extends Controller
         if ($validasi->passes()) {
             $dampak = new Dampak;
             $dampak->nama_dampak = $request->nama_dampak;
-            $dampak->sk_dampak = $request->singkatan;
+            $dampak->id_dampak = $request->singkatan;
 
             if($dampak->save()){
                 return json_encode(array("success"=>"Berhasil Menambahkan Data Dampak"));
@@ -66,7 +67,7 @@ class DampakController extends Controller
         if($validasi->passes()) {
             $dampak = Dampak::where('id_dampak', $id)->first();
             $dampak->nama_dampak = $request->nama_dampak;
-            $dampak->sk_dampak = $request->singkatan;
+            $dampak->id_dampak = $request->singkatan;
 
             if ($dampak->update()) {
                 return json_encode(array("success" => "Berhasil Merubah Data Dampak :)"));
@@ -84,11 +85,16 @@ class DampakController extends Controller
     }
 
     public function delete($id){
-        $dampak = Dampak::where('id_dampak', $id)->first();
-        if($dampak->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Dampak :)"));
+        if (InformasiPengaduan::where('dampak_id',$id)->count() == 0) {
+            $dampak = Dampak::where('id_dampak', $id)->first();
+            if($dampak->delete()){
+                return json_encode(array("success"=>"Berhasil Menghapus Data Dampak :)"));
+            }else{
+                return json_encode(array("error"=>"Gagal Menghapus Data Dampak :("));
+            }
         }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Dampak :("));
+            return json_encode(array("error"=>"Gagal Data Sedang Di Pakai"));
         }
     }
+
 }

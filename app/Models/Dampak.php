@@ -9,6 +9,8 @@ class Dampak extends Model
 {
     protected $table = 'dampaks';
     protected $primaryKey = 'id_dampak';
+    public $incrementing = false;
+    public $keyType = 'string';
     public $timestamps = false;
     protected $fillable = [
         'nama_dampak','sk_dampak'

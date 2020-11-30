@@ -14,9 +14,10 @@ class CreateUrgensisTable extends Migration
     public function up()
     {
         Schema::create('urgensis', function (Blueprint $table) {
-            $table->bigIncrements('id_urgensi');
+            $table->string('id_urgensi');
             $table->String('nama_urgensi');
-            $table->String('sk_urgensi');
+
+            $table->primary('id_urgensi');
         });
     }
 

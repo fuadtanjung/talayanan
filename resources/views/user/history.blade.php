@@ -16,7 +16,8 @@
                 </div>
             </div>
         </div>
-        <table class="table datatable-basic table-bordered table-hover" width="100%" id="datatable">
+
+        <table class="table datatable-basic table-bordered table-hover table-sm" width="100%" id="datatable">
             <thead>
             <tr>
                 <th>No Tiket </th>
@@ -33,16 +34,26 @@
     <script type="text/javascript">
         function loadData() {
             $('#datatable').dataTable({
-                "ajax": "{{ url('/user/datahistory') }}",
+                "ajax": "{{ url('/user/data3') }}",
                 "columns": [
                     { "data": "no_tiket" },
                     { "data": "deskripsi" },
                     { "data": "waktu_pelaporan" },
                     { "data": "status" },
                 ],
-                scrollX: true,
-                scrollY: '350px',
-                scrollCollapse: true,
+                autoWidth: false,
+                columnDefs: [{
+                    width: 200,
+                    "className": "text-center",
+                    targets: [ 3 ]
+                },
+                    {
+                        targets: [2],
+                        render: $.fn.dataTable.render.moment( 'D MMM YYYY' ),
+                    },{
+                    width: 300,
+                    targets: [ 1 ]
+                }],
                 dom: '<"datatable-header"fl><"datatable-scroll datatable-scroll-wrap"t><"datatable-footer"ip>',
                 language: {
                     search: '<span>Filter:</span> _INPUT_',
@@ -52,4 +63,15 @@
                 }
             });
         }
+
+        function resetFormReport() {
+            $("#form_report")[0].reset();
+            $("#tes").val("").change();
+        }
+
+        $(window).on('load', function () {
+            loadData();
+        })
+    </script>
+
 @endsection

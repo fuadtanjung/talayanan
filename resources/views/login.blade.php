@@ -81,7 +81,7 @@
                             @endif
 
                             <div class="form-group form-group-feedback form-group-feedback-left">
-                                <input type="text" class="form-control" id="login" name="login" placeholder="Nip/Nama Pengguna">
+                                <input type="text" class="form-control" id="login" name="login" placeholder="Email">
                                 <div class="form-control-feedback">
                                     <i class="icon-user text-muted"></i>
                                 </div>
