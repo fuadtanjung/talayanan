@@ -27,7 +27,7 @@
         <table class="table datatable-basic table-bordered table-hover" width="100%" id="datatable">
             <thead>
             <tr>
-                <th>Nama </th>
+                <th>Nama Konfirmasi</th>
                 <th class="text-center">Actions</th>
             </tr>
             </thead>

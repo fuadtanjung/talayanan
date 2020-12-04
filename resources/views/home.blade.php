@@ -42,7 +42,7 @@
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0">{{ count($diajukan) }}</h3>
-                        <span class="text-uppercase font-size-xs">pengaduan diajukan</span>
+                        <span class="text-uppercase font-size-xs">pengaduan <br> diajukan</span>
                     </div>
 
                     <div class="ml-3 align-self-center">
@@ -57,7 +57,7 @@
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0">{{ count($diproses) }}</h3>
-                        <span class="text-uppercase font-size-xs">pengaduan diproses</span>
+                        <span class="text-uppercase font-size-xs">pengaduan <br> diproses</span>
                     </div>
 
                     <div class="ml-3 align-self-center">
@@ -72,7 +72,7 @@
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0">{{ count($difasilitasi) }}</h3>
-                        <span class="text-uppercase font-size-xs">pengaduan selesai</span>
+                        <span class="text-uppercase font-size-xs">pengaduan <br> selesai</span>
                     </div>
 
                     <div class="ml-3 align-self-center">
@@ -106,7 +106,7 @@
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0">{{ count($admdiajukan) }}</h3>
-                        <span class="text-uppercase font-size-xs">pengaduan diajukan</span>
+                        <span class="text-uppercase font-size-xs">pengaduan <br> diajukan</span>
                     </div>
 
                     <div class="ml-3 align-self-center">
@@ -121,7 +121,7 @@
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0">{{ count($admdiproses) }}</h3>
-                        <span class="text-uppercase font-size-xs">pengaduan diproses</span>
+                        <span class="text-uppercase font-size-xs">pengaduan <br> diproses</span>
                     </div>
 
                     <div class="ml-3 align-self-center">
@@ -136,7 +136,7 @@
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0">{{ count($admdifasilitasi) }}</h3>
-                        <span class="text-uppercase font-size-xs">pengaduan selesai</span>
+                        <span class="text-uppercase font-size-xs">pengaduan <br> selesai</span>
                     </div>
 
                     <div class="ml-3 align-self-center">

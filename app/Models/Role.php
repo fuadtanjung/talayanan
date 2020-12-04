@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    protected $fillable = ['nama_role'];
+    protected $table = 'roles';
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    public $keyType = 'string';
+    protected $fillable = [
+        'nama'
+    ];
 
     public function user()
     {

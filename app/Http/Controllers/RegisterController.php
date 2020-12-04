@@ -19,7 +19,6 @@ class RegisterController extends Controller
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'nip' => 'required|unique:users',
             'nama' => 'required',
             'kontak' => 'required',
             'email' => 'required',
@@ -34,7 +33,6 @@ class RegisterController extends Controller
         if($validasi->passes()){
             $user = new User();
             $user->name = $request->nama;
-            $user->nip = $request->nip;
             $user->kontak = $request->kontak;
             $user->email= $request->email;
             $user->role_id = $request->role;

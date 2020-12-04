@@ -19,9 +19,11 @@
                                 <label>Waktu Pelaporan</label>
                                 <input type="date" class="form-control" id="waktu_pelaporan" name="waktu_pelaporan">
                             </div>
-                            <div class="col-sm-4" id="tanggal">
-                                <label>Media Pelaporan</label>
-                                <input type="text" class="form-control" id="media_pelaporan" name="media_pelaporan">
+                            <div class="col-sm-4">
+                                <label>Media</label>
+                                <select data-placeholder="Pilih Media" id="media_pelaporan" name="media_pelaporan" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                    <option></option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -44,26 +46,26 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <label>Tipe</label>
-                                <select class="custom-select select2" id="tipe" name="tipe">
-                                    <option value="">Pilih Tipe</option>
+                                <select data-placeholder="Pilih Tipe" id="tipe" name="tipe" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                    <option></option>
                                 </select>
                             </div>
                             <div class="col-sm-3">
                                 <label>Kategori</label>
-                                <select class="custom-select select2" id="kategori" name="kategori">
-                                    <option value="">Pilih Kategori</option>
+                                <select data-placeholder="Pilih Kategori" id="kategori" name="kategori" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                    <option></option>
                                 </select>
                             </div>
                             <div class="col-sm-3">
                                 <label>User</label>
-                                <select class="custom-select select2" required id="user" name="user">
-                                    <option value="">Pilih User</option>
+                                <select data-placeholder="Pilih User" id="user" name="user" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                    <option></option>
                                 </select>
                             </div>
                             <div class="col-sm-3">
                                 <label>Jenis</label>
-                                <select class="custom-select select2" required id="jenis" name="jenis">
-                                    <option value="">Pilih Jenis</option>
+                                <select data-placeholder="Pilih Jenis" id="jenis" name="jenis" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                    <option></option>
                                 </select>
                             </div>
                         </div>
@@ -72,20 +74,20 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <label>Urgensi</label>
-                                <select class="custom-select select2" required id="urgensi" name="urgensi">
-                                    <option value="">Pilih Urgensi</option>
+                                <select data-placeholder="Pilih Urgensi" id="urgensi" name="urgensi" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                    <option></option>
                                 </select>
                             </div>
                             <div class="col-sm-4">
                                 <label>Dampak</label>
-                                <select class="custom-select select2" required id="dampak" name="dampak">
-                                    <option value="">Pilih Dampak</option>
+                                <select data-placeholder="Pilih Dampak" id="dampak" name="dampak" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                    <option></option>
                                 </select>
                             </div>
                             <div class="col-sm-4">
                                 <label>Prioritas</label>
-                                <select class="custom-select select2" required id="prioritas" name="prioritas">
-                                    <option value="">Pilih Prioritas</option>
+                                <select data-placeholder="Pilih Prioritas" id="prioritas" name="prioritas" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                    <option></option>
                                 </select>
                             </div>
                         </div>
@@ -96,9 +98,9 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label>Petugas</label>
-                                <select class="custom-select select2" required id="petugas" name="petugas">
-                                    <option value="">Pilih Petugas</option>
-                                </select>
+                                @foreach($initials AS $a)
+                                    <input type="text" class="form-control" id="petugas" name="petugas" value="{{ $a }}" readonly>
+                                @endforeach
                             </div>
                             <div class="col-sm-6">
                                 <h6>Keterangan</h6>
@@ -115,8 +117,10 @@
                                 <textarea class="form-control" id="solusi" name="solusi"></textarea>
                             </div>
                             <div class="col-sm-6">
-                                <h6>status konfirmasi kepada pengguna</h6>
-                                <textarea class="form-control" id="konfirmasi" name="konfirmasi"></textarea>
+                                <label>status konfirmasi kepada pengguna</label>
+                                <select data-placeholder="Pilih Konfirmasi" id="konfirmasi" name="konfirmasi" class="form-control form-control-sm select" data-container-css-class="select-sm">
+                                    <option></option>
+                                </select>
                             </div>
                         </div>
                     </div>

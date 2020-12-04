@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Role;
 use App\Models\Userkl;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -10,7 +11,7 @@ use Yajra\DataTables\Facades\DataTables;
 class UserController extends Controller
 {
     public function index(){
-        return view('klasifikasi.user');
+        return view('admin.klasifikasi.user');
     }
 
     protected function  validasiData($data){
@@ -20,17 +21,17 @@ class UserController extends Controller
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'nama_user' => 'required:userkl ',
-            'singkatan' => 'required:userkl',
+            'nama_user' => 'required',
+            'singkatan' => 'required',
         ], $pesan);
     }
 
     public function input(Request $request){
         $validasi = $this->validasiData($request->all());
         if ($validasi->passes()) {
-            $user = new Userkl;
-            $user->nama_user = $request->nama_user;
-            $user->sk_user = $request->singkatan;
+            $user = new Role();
+            $user->nama = $request->nama_user;
+            $user->id = $request->singkatan;
 
             if($user->save()){
                 return json_encode(array("success"=>"Berhasil Menambahkan Data User"));
@@ -49,7 +50,7 @@ class UserController extends Controller
     }
 
     public function ajaxTable(){
-        $user =  Userkl::all();
+        $user =  Role::whereNotIn('nama',['admin'])->get();;
         try {
             return Datatables::of($user)
                 ->addColumn('action', function ($userkl) {
@@ -65,9 +66,9 @@ class UserController extends Controller
     public function edit($id, Request $request){
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()) {
-            $user = Userkl::where('id_user', $id)->first();
-            $user->nama_user = $request->nama_user;
-            $user->sk_user = $request->singkatan;
+            $user = Role::where('id', $id)->first();
+            $user->nama = $request->nama_user;
+            $user->id = $request->singkatan;
 
             if ($user->update()) {
                 return json_encode(array("success" => "Berhasil Merubah Data User :)"));
@@ -85,7 +86,7 @@ class UserController extends Controller
     }
 
     public function delete($id){
-        $user = Userkl::where('id_user', $id)->first();
+        $user = Role::where('id', $id)->first();
         if($user->delete()){
             return json_encode(array("success"=>"Berhasil Menghapus Data User :)"));
         }else{

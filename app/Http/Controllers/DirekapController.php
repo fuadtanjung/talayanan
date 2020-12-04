@@ -71,7 +71,6 @@ class DirekapController extends Controller
             'urgensi' => 'required:informasi_pelaporan',
             'dampak' => 'required:informasi_pelaporan',
             'prioritas' => 'required:informasi_pelaporan',
-            'petugas' => 'required:informasi_pelaporan',
             'keterangan' => 'required:informasi_pelaporan',
             'solusi' => 'required:informasi_pelaporan',
             'konfirmasi' => 'required:informasi_pelaporan',
@@ -87,7 +86,7 @@ class DirekapController extends Controller
             $informasi_pelaporan = new InformasiPengaduan;
             $informasi_pelaporan->nama_pengguna = $request->nama_pengguna;
             $informasi_pelaporan->kontak_pengguna = $request->kontak_pengguna;
-            $informasi_pelaporan->media_pelaporan = $request->media_pelaporan;
+            $informasi_pelaporan->media_id = $request->media_pelaporan;
             $informasi_pelaporan->deskripsi = $request->deskripsi;
             $informasi_pelaporan->waktu_pelaporan= $request->waktu_pelaporan;
             $informasi_pelaporan->kontak_pengguna = $request->kontak_pengguna;
@@ -98,7 +97,6 @@ class DirekapController extends Controller
             $informasi_pelaporan->prioritas_id = $request->prioritas;
             $informasi_pelaporan->jenis_id = $request->jenis;
             $informasi_pelaporan->dampak_id = $request->dampak;
-            $informasi_pelaporan->petugas_id = $request->petugas;
             $informasi_pelaporan->keterangan = $request->keterangan;
             $informasi_pelaporan->solusi = $request->solusi;
             $informasi_pelaporan->status = $status;

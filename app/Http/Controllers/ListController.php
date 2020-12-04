@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dampak;
 use App\Models\Jenis;
 use App\Models\Kategori;
+use App\Models\Media;
 use App\Models\Petugas;
 use App\Models\Prioritas;
 use App\Models\Role;
@@ -55,6 +56,11 @@ class ListController extends Controller
             ->select('id','nama')
             ->whereNotIn('nama',['admin'])->get();
         return json_encode($role);
+    }
+
+    public function listMedia(){
+        $media = Media::all();
+        return json_encode($media);
     }
 
     public function listKonfirmasi(){

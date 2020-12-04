@@ -82,8 +82,8 @@
             $('#datatable').dataTable({
                 "ajax": "{{ url('/userkl/data') }}",
                 "columns": [
-                    { "data": "nama_user" },
-                    { "data": "sk_user" },
+                    { "data": "nama" },
+                    { "data": "id" },
                     { "data": "action" }
                 ],
                 scrollX: true,
@@ -211,10 +211,10 @@
             $('#datatable tbody').on('click', '#edit', function (e) {
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
-                $('#nama_user').val(data.nama_user).change();
-                $('#sk_user').val(data.sk_user).change();
+                $('#nama_user').val(data.nama).change();
+                $('#sk_user').val(data.id).change();
                 $("#submit_user").attr("aksi","edit");
-                $('#submit_user').attr("iduser",data.id_user);
+                $('#submit_user').attr("iduser",data.id);
                 $('#input_user').modal('toggle');
             } );
 
@@ -237,7 +237,7 @@
                 }).then((result) => {
                     if (result.value) {
                         $.ajax({
-                            url: "{{ url('/userkl/delete/') }}/" + data.id_user,
+                            url: "{{ url('/userkl/delete/') }}/" + data.id,
                             type: "post",
                             data: {
                                 "_token": "{{ csrf_token() }}",

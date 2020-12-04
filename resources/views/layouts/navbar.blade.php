@@ -127,7 +127,6 @@
                                     <i class="icon-home4"></i>
                                     <span>
 										Dashboard
-										<span class="d-block font-weight-normal opacity-50">No active orders</span>
 									</span>
                                 </a>
 
@@ -165,7 +164,7 @@
                                 <ul class="nav nav-group-sub" data-submenu-title="Klasifikasi">
                                     <li class="nav-item"><a href="{{ url('tipe') }}" class="nav-link {{ request()->is('tipe') ? 'active' : '' }}">Tipe</a></li>
                                     <li class="nav-item"><a href="{{ url('kategori') }}" class="nav-link {{ request()->is('kategori') ? 'active' : '' }}">Kategori</a></li>
-{{--                                    <li class="nav-item"><a href="{{ url('userkl') }}" class="nav-link {{ request()->is('user') ? 'active' : '' }}">User</a></li>--}}
+                                    <li class="nav-item"><a href="{{ url('userkl') }}" class="nav-link {{ request()->is('user') ? 'active' : '' }}">User</a></li>
                                     <li class="nav-item"><a href="{{ url('jenis') }}" class="nav-link {{ request()->is('jenis') ? 'active' : '' }}">Jenis</a></li>
                                     <li class="nav-item"><a href="{{ url('urgensi')}}" class="nav-link {{ request()->is('urgensi') ? 'active' : '' }}">Urgensi</a></li>
                                     <li class="nav-item"><a href="{{ url('dampak') }}" class="nav-link {{ request()->is('dampak') ? 'active' : '' }}">Dampak</a></li>

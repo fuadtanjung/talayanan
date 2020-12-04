@@ -77,14 +77,22 @@ class DiprosesController extends Controller
             $informasi_pelaporan->tgl_selesai = date('Y-m-d');
             $informasi_pelaporan->update();
 
-            if ($informasi_pelaporan)  {
+            $no_tiket = $request->no_tiket;
+            $konfirmasi = $request->konfirmasi;
+            if ($informasi_pelaporan){
+                $data =  InformasiPengaduan::where('no_tiket',$no_tiket)
+                    ->where('id_konfirmasi',$konfirmasi)
+                    ->join('status_konfirmasis','informasi_pengaduans.konfirmasi_id','status_konfirmasis.id_konfirmasi')
+                    ->select('status_konfirmasis.nama_konfirmasi')
+                    ->first();
+
                $my_apikey = 'LBGMSEQL392UXY7C0Y36';
                $nohape = $request->kontak_pengguna;
                if($nohape['0']=='0') {
                    $nohape['0']='2';
                    $nohape = '6'.$nohape;
                }
-               $message = "Pengaduan Anda Sudah Diselesaikan";
+               $message = "Pengaduan Anda Dengan No. Tiket : $request->no_tiket Telah $data->nama_konfirmasi";
                $api_url = "http://panel.rapiwha.com/send_message.php";
                $api_url .= "?apikey=". urlencode ($my_apikey);
                $api_url .= "&number=". urlencode ($nohape);

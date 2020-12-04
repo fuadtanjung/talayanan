@@ -18,10 +18,10 @@
         </div>
 
         <div class="card-body">
-            <button type="button" class="btn bg-primary btn-labeled btn-labeled-left rounded-round" data-toggle="modal" data-target="#input_pengaduan">
-                <b><i class="icon-plus-circle2"></i></b>
-                Tambah
-            </button>
+           {{-- <button type="button" class="btn bg-primary btn-labeled btn-labeled-left rounded-round" data-toggle="modal" data-target="#input_pengaduan">
+               <b><i class="icon-plus-circle2"></i></b>
+               Tambah
+           </button> --}}
 
             <button type="button" class="btn bg-success btn-labeled btn-labeled-left rounded-round sidebar-right-toggle">
                 <b><i class="icon-printer"></i></b>
@@ -425,6 +425,7 @@
                     })
                 }
             });
+
             {{--$.ajax({--}}
             {{--    url: '{{ url('list/user') }}',--}}
             {{--    dataType: "json",--}}
@@ -435,6 +436,7 @@
             {{--        })--}}
             {{--    }--}}
             {{--});--}}
+
             $.ajax({
                 url: '{{ url('list/urgensi') }}',
                 dataType: "json",
@@ -475,6 +477,40 @@
                     })
                 }
             });
+
+            $.ajax({
+                url: '{{ url('list/konfirmasi') }}',
+                dataType: "json",
+                success: function (data) {
+                    var konfirmasi = jQuery.parseJSON(JSON.stringify(data));
+                    $.each(konfirmasi, function (k, v) {
+                        $('#konfirmasi').append($('<option>', {value: v.id_konfirmasi}).text(v.nama_konfirmasi))
+                    })
+                }
+            });
+
+            $.ajax({
+                url: '{{ url('list/role') }}',
+                dataType: "json",
+                success: function (data) {
+                    var role = jQuery.parseJSON(JSON.stringify(data));
+                    $.each(role, function (k, v) {
+                        $('#user').append($('<option>', {value: v.id}).text(v.nama))
+                    })
+                }
+            });
+
+            $.ajax({
+                url: '{{ url('list/media') }}',
+                dataType: "json",
+                success: function (data) {
+                    var role = jQuery.parseJSON(JSON.stringify(data));
+                    $.each(role, function (k, v) {
+                        $('#media_pelaporan').append($('<option>', {value: v.id_media}).text(v.nama_media))
+                    })
+                }
+            });
+
             {{--$.ajax({--}}
             {{--    url: '{{ url('list/petugas') }}',--}}
             {{--    dataType: "json",--}}

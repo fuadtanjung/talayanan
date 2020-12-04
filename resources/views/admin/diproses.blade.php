@@ -154,6 +154,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <input type="text"  name="no_tiket" id="no_tiket" class="form-control" hidden/>
                     </form>
                 </div>
 
@@ -292,6 +294,7 @@
                 var table = $('#datatable').DataTable();
                 var data = table.row($(this).parents('tr')).data();
                 $('#nama_pengguna').val(data.name);
+                $('#no_tiket').val(data.no_tiket);
                 $('#waktu_pelaporan').val(data.waktu_pelaporan);
                 $('#media_pelaporan').val(data.nama_media);
                 $('#kontak_pengguna').val(data.kontak);

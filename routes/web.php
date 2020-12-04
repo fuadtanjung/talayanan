@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
             Route::get('prioritas', 'ListController@listPrioritas');
             Route::get('petugas', 'ListController@listPetugas');
             Route::get('konfirmasi', 'ListController@listKonfirmasi');
+            Route::get('media', 'ListController@listMedia');
         });
 
         Route::group(['prefix' => 'proses'], function () {
