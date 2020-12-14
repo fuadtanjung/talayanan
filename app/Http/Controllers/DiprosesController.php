@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Detail_petugas;
 use App\Models\InformasiPengaduan;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;

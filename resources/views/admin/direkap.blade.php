@@ -214,13 +214,13 @@
                         <h6>Dari</h6>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="date" name="start" id="start" class="form-control" name="dari" />
+                                <input type="date" name="start" id="start" class="form-control"/>
                             </div>
                         </div>
                         <h6>Sampai</h6>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="date"  name="end" id="end" class="form-control" name="sampai" />
+                                <input type="date"  name="end" id="end" class="form-control"/>
                             </div>
                         </div>
                         <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
