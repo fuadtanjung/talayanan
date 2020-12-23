@@ -22,7 +22,7 @@ class DiajukanController extends Controller
                 ->addColumn('action', function ($informasi) {
                     return "
                         <a href=\"#\" class=\"btn btn-sm btn-outline-success rounded-round\" title=\"Lihat Data\" data-popup=\"tooltip\" id=\"edit\"><i class=\"fa fa-eye\"></i></a>
-                        <a href=\"#\" class=\"btn btn-sm btn-outline-primary  rounded-round\" title=\"Proses Data\" data-popup=\"tooltip\" id=\"change\"><i class=\"fa fa-power-off\"></i></a>
+                        <a href=\"#\" class=\"btn btn-sm btn-outline-primary  rounded-round\" title=\"Proses Data\" data-popup=\"tooltip\" id=\"change\"><i class=\"fa fa-edit\"></i></a>
                         <a href=\"#\" class=\"btn btn-sm btn-outline-danger rounded-round\" title=\"Hapus Data\" data-popup=\"tooltip\" id=\"delete\"><i class=\"fa fa-trash\"></i> </a>
                     ";
                 })

@@ -17,7 +17,7 @@ class InformasiPengaduan extends Model
     ];
 
     public function user(){
-        return $this->belongsTo(User::class,'id_pengaduan','id');
+        return $this->belongsTo(User::class,'user_id','id');
     }
     public function dampak(){
         return $this->belongsTo(Dampak::class,'dampak_id','id_dampak');

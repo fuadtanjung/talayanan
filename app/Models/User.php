@@ -44,7 +44,7 @@ class User extends Authenticatable
     }
 
     public function informasi_pengaduan(){
-        return $this->hasOne(InformasiPengaduan::class,'user_id','id');
+        return $this->hasOne(InformasiPengaduan::class);
     }
 
     public function detail_petugas(){

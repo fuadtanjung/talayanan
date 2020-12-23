@@ -81,7 +81,7 @@
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
                 swal.fire({
-                    title: 'Apakah Anda Yakin?',
+                    title: 'Apakah Anda Yakin Proses Pengaduan?',
                     text: "Anda Hanya Sekali Mengubah Status!",
                     type: 'warning',
                     showCancelButton: true,
@@ -140,7 +140,7 @@
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
                 swal.fire({
-                    title: 'Yakin Menghapus?',
+                    title: 'Apakah Anda Yakin Menghapus?',
                     text: "You won't be able to revert this!",
                     type: 'warning',
                     showCancelButton: true,

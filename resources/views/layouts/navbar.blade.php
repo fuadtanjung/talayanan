@@ -30,7 +30,7 @@
                             @if ( auth()->user()->role->nama != "admin")
                                 <img src="{{ asset('images/user.png') }}" class="rounded-circle mr-2" height="34" alt="">
                             @endif
-                        <span>{{ Auth::user()->name }}</span>
+                        <span>{{ auth()->user()->name }}</span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
@@ -94,7 +94,7 @@
                             <div class="media">
                                 <div class="mr-3">
                                     @if ( auth()->user()->role->nama == "admin")
-                                    <a href="#"><img src="{{ asset('images/logo3.png') }}" width="38" height="38" class="rounded-circle" alt=""></a>
+                                    <a href="#"><img src="{{ asset('images/logo2.png') }}" width="38" height="38" class="rounded-circle" alt=""></a>
                                         @endif
                                         @if ( auth()->user()->role->nama != "admin")
                                             <a href="#"><img src="{{ asset('images/user.png') }}" width="38" height="38" class="rounded-circle" alt=""></a>
@@ -102,7 +102,7 @@
                                 </div>
 
                                 <div class="media-body">
-                                    <div class="media-title font-weight-semibold">{{ Auth::user()->name }}</div>
+                                    <div class="media-title font-weight-semibold">{{ auth()->user()->name }}</div>
                                     @if ( auth()->user()->role->nama == "admin")
                                     <div class="font-size-xs opacity-50">
                                         <i class="icon-pin font-size-sm"></i> &nbsp;Padang
@@ -152,19 +152,19 @@
                             </li>
 
                             <li class="nav-item nav-item-submenu {{ request()->is(['konfirmasi','media']) ? 'nav-item-expanded' : '' }} {{ request()->is(['konfirmasi','media']) ? 'nav-item-open' : '' }} ">
-                                <a href="#" class="nav-link {{ request()->is(['status','konfirmasi']) ? 'active' : '' }}"><i class="icon-transmission"></i> <span>Penanganan</span></a>
+                                <a href="#" class="nav-link {{ request()->is(['status','konfirmasi']) ? 'active' : '' }}"><i class="icon-hand"></i> <span>Penanganan</span></a>
                                 <ul class="nav nav-group-sub" data-submenu-title="Penanganan">
                                     <li class="nav-item"><a href="{{ url('media') }}" class="nav-link {{ request()->is('media') ? 'active' : '' }}">Media</a></li>
                                     <li class="nav-item"><a href="{{ url('konfirmasi') }}" class="nav-link {{ request()->is('konfirmasi') ? 'active' : '' }}">Konfirmasi</a></li>
                                 </ul>
                             </li>
 
-                            <li class="nav-item nav-item-submenu {{ request()->is(['dampak','user','jenis','kategori','petugas','urgensi','prioritas','tipe']) ? 'nav-item-expanded' : '' }} {{ request()->is(['dampak','user','jenis','kategori','petugas','urgensi','prioritas','tipe']) ? 'nav-item-open' : '' }} ">
-                                <a href="#" class="nav-link {{ request()->is(['dampak','user','jenis','kategori','petugas','urgensi','prioritas','tipe','kategori']) ? 'active' : '' }}"><i class="icon-transmission"></i> <span>Klasifikasi</span></a>
+                            <li class="nav-item nav-item-submenu {{ request()->is(['dampak','userkl','jenis','kategori','petugas','urgensi','prioritas','tipe']) ? 'nav-item-expanded' : '' }} {{ request()->is(['dampak','userkl','jenis','kategori','petugas','urgensi','prioritas','tipe']) ? 'nav-item-open' : '' }} ">
+                                <a href="#" class="nav-link {{ request()->is(['dampak','userkl','jenis','kategori','petugas','urgensi','prioritas','tipe','kategori']) ? 'active' : '' }}"><i class="icon-transmission"></i> <span>Klasifikasi</span></a>
                                 <ul class="nav nav-group-sub" data-submenu-title="Klasifikasi">
                                     <li class="nav-item"><a href="{{ url('tipe') }}" class="nav-link {{ request()->is('tipe') ? 'active' : '' }}">Tipe</a></li>
                                     <li class="nav-item"><a href="{{ url('kategori') }}" class="nav-link {{ request()->is('kategori') ? 'active' : '' }}">Kategori</a></li>
-                                    <li class="nav-item"><a href="{{ url('userkl') }}" class="nav-link {{ request()->is('user') ? 'active' : '' }}">User</a></li>
+                                    <li class="nav-item"><a href="{{ url('userkl') }}" class="nav-link {{ request()->is('userkl') ? 'active' : '' }}">User</a></li>
                                     <li class="nav-item"><a href="{{ url('jenis') }}" class="nav-link {{ request()->is('jenis') ? 'active' : '' }}">Jenis</a></li>
                                     <li class="nav-item"><a href="{{ url('urgensi')}}" class="nav-link {{ request()->is('urgensi') ? 'active' : '' }}">Urgensi</a></li>
                                     <li class="nav-item"><a href="{{ url('dampak') }}" class="nav-link {{ request()->is('dampak') ? 'active' : '' }}">Dampak</a></li>
@@ -192,6 +192,13 @@
                                     <i class="icon-file-text2"></i>
                                     <span>
 										Riwayat Pengaduan
+									</span>
+                                </a>
+
+                                <a href="{{ url('user/history') }}" class="nav-link {{ request()->is('user/history') ? 'active' : '' }}">
+                                    <i class="icon-file-text2"></i>
+                                    <span>
+										Profil
 									</span>
                                 </a>
                             @endif

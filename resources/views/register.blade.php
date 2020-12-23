@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo2.png') }}" />
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Global stylesheets -->
@@ -119,7 +119,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="btn bg-teal-400 btn-labeled btn-labeled-right" aksi="input" id="submit_pengguna"><b><i class="icon-plus3"></i></b> Create account</button>
+                                <button type="button" class="btn bg-teal-400 btn-labeled btn-labeled-left btn-block" aksi="input" id="submit_pengguna"><b><i class="icon-plus3"></i></b> Create account</button>
                             </div>
                         </div>
                     </div>
@@ -168,6 +168,7 @@
         $("#form_daftar")[0].reset();
         $('#nama').val("").change();
         $('#kontak').val("").change();
+        $('#role').val("").change();
         $('#username').val("").change();
         $('#password').val("").change();
     }
@@ -191,7 +192,6 @@
                         position: 'top-right',
                         text: pesan.error,
                     });
-                    resetFormdaftar();
                 }else if(pesan.success != null){
                     Toast.fire({
                         type: 'success',

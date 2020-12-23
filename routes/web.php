@@ -23,12 +23,11 @@ Route::post('registerpost','RegisterController@input')->name('register.post');
 Route::get('list/role', 'ListController@listRole');
 
 Route::middleware('auth')->group(function () {
-    Route::group(['middleware' => ['checkRole:admin,PPK,panitia,penyedia,Lain-lain,Auditor']], function () {
-        Route::get('/', 'HomeController@index')->name('home');
-    });
 
+    Route::get('/', 'HomeController@index')->name('home'); //Home admin dan user
+
+    ////////////////////// Route Admin /////////////////////////////////////////
     Route::group(['middleware' => ['checkRole:admin']], function () {
-
         Route::group(['prefix' => 'admin'], function () {
             Route::get('/', 'DiajukanController@index');
             Route::get('data', 'DiajukanController@ajaxTable');
@@ -156,10 +155,11 @@ Route::middleware('auth')->group(function () {
         });
     });
 
+
+    ///////////////////// Route Selain Admin ///////////////////////////////////////////////
+
     Route::group(['middleware' => ['checkRole:PPK,panitia,penyedia,Lain-lain,Auditor']], function () {
-
         Route::group(['prefix' => 'user'], function () {
-
             //diajukan
             Route::get('/', 'PengaduanController@index');
             Route::get('/tambah', 'PengaduanController@add');

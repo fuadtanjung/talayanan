@@ -164,6 +164,7 @@ class DirekapController extends Controller
                 ->join ('status_konfirmasis','informasi_pengaduans.konfirmasi_id','=','status_konfirmasis.id_konfirmasi')
                 ->where('status',$status)
                 ->whereBetween('tgl_selesai', [$mulai, $akhir])
+                ->orderBy('no_tiket', 'asc')
                 ->get();
             $names = User::where('role_id','=','adm')->pluck('name');
             $initials = [];
@@ -180,6 +181,7 @@ class DirekapController extends Controller
             $informasi_pelaporan = InformasiPengaduan::join ('users','informasi_pengaduans.user_id','=','users.id')
                 ->join ('media','informasi_pengaduans.media_id','=','media.id_media')
                 ->join ('status_konfirmasis','informasi_pengaduans.konfirmasi_id','=','status_konfirmasis.id_konfirmasi')
+                ->orderBy('no_tiket', 'asc')
                 ->get();
             $names = User::where('role_id','=','adm')->pluck('name');
             $initials = [];

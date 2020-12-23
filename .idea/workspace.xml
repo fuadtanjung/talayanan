@@ -2,25 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3e79e59-55d2-4da0-99e7-dda5ffb8fcdb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckRole.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_08_221817_create_roles_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_08_222311_add_relation_to_users_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/RoleSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/user.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/user/history.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/user/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/download.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/talayanan.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/talayanan.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TambahPengaduanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PengaduanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DiajukanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DiajukanController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DiprosesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DiprosesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DirekapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DirekapController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/InformasiPengaduan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/InformasiPengaduan.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_27_062623_create_informasi_pengaduans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_27_062623_create_informasi_pengaduans_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/diajukan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/diajukan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/diproses.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/diproses.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/register.blade.php" afterDir="false" />
@@ -148,6 +142,7 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
+      <path value="$PROJECT_DIR$/vendor/alfa6661/laravel-autonumber" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jOsCg7ujetHPadwTvsh6DPYC2z" />
@@ -172,11 +167,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\talayanan\app\Http\Controllers\Auth" />
+      <recent name="C:\laragon\www\talayanan\resources\views\admin\penanganan" />
+      <recent name="C:\laragon\www\talayanan\resources\views\admin" />
       <recent name="C:\laragon\www\talayanan\app\Models" />
+      <recent name="C:\laragon\www\talayanan\app\Http\Controllers\Auth" />
       <recent name="C:\laragon\www\talayanan\app" />
-      <recent name="C:\laragon\www\talayanan\resources\views" />
-      <recent name="C:\laragon\www\talayanan\app\Http\Controllers" />
     </key>
   </component>
   <component name="RunManager">
@@ -218,6 +213,48 @@
       <workItem from="1604897417419" duration="595000" />
       <workItem from="1604914198133" duration="1130000" />
       <workItem from="1605018448050" duration="59000" />
+      <workItem from="1605028967527" duration="72000" />
+      <workItem from="1605060443931" duration="76000" />
+      <workItem from="1605060958845" duration="68000" />
+      <workItem from="1605074288016" duration="245000" />
+      <workItem from="1605160441589" duration="2460000" />
+      <workItem from="1605314361887" duration="2132000" />
+      <workItem from="1605316563366" duration="1208000" />
+      <workItem from="1605424944891" duration="682000" />
+      <workItem from="1605598703749" duration="595000" />
+      <workItem from="1605717049264" duration="1000000" />
+      <workItem from="1605762509983" duration="26000" />
+      <workItem from="1605783511277" duration="595000" />
+      <workItem from="1605829608855" duration="6550000" />
+      <workItem from="1605841366854" duration="10452000" />
+      <workItem from="1605857068635" duration="7875000" />
+      <workItem from="1605891439248" duration="2622000" />
+      <workItem from="1605928568604" duration="3227000" />
+      <workItem from="1605940644109" duration="1979000" />
+      <workItem from="1606017423827" duration="4076000" />
+      <workItem from="1606041031919" duration="16000" />
+      <workItem from="1606042228419" duration="9007000" />
+      <workItem from="1606055719970" duration="2156000" />
+      <workItem from="1606064332916" duration="5641000" />
+      <workItem from="1606104627774" duration="9486000" />
+      <workItem from="1606284298554" duration="9836000" />
+      <workItem from="1606371875221" duration="6828000" />
+      <workItem from="1606450950368" duration="275000" />
+      <workItem from="1606458071802" duration="632000" />
+      <workItem from="1606458840737" duration="1970000" />
+      <workItem from="1606494208858" duration="5166000" />
+      <workItem from="1606562143944" duration="9737000" />
+      <workItem from="1606705568310" duration="1474000" />
+      <workItem from="1606743260697" duration="10000" />
+      <workItem from="1606830582555" duration="2569000" />
+      <workItem from="1606843824816" duration="709000" />
+      <workItem from="1606874054916" duration="1604000" />
+      <workItem from="1606876825939" duration="2204000" />
+      <workItem from="1607089763617" duration="64000" />
+      <workItem from="1607092110214" duration="281000" />
+      <workItem from="1608042088641" duration="2348000" />
+      <workItem from="1608099089317" duration="4263000" />
+      <workItem from="1608619633090" duration="6200000" />
     </task>
     <servers />
   </component>
@@ -240,11 +277,12 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="276" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604883450480" />
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604890778127">
+    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606289425126">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604890778127" />
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1604167807916" />
+    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1606068252047" />
+    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1605942094725" />
+    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1606289425126" />
     <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1603708510038">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -261,17 +299,26 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738/2732.-237.1280.689/1366.-104.1366.738@0.0.1366.738" timestamp="1603708510038" />
+    <state x="459" y="92" key="NewPhpClassDialog" timestamp="1606018130367">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="459" y="92" key="NewPhpClassDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1606018130367" />
     <state x="184" y="14" key="SettingsEditor" timestamp="1604337793185">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="14" key="SettingsEditor/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604337793185" />
     <state x="184" y="14" key="SettingsEditor/0.0.1366.738/1366.-104.1366.738/2732.-237.1280.689@0.0.1366.738" timestamp="1603775112179" />
     <state x="184" y="14" key="SettingsEditor/0.0.1366.738/2732.-237.1280.689/1366.-104.1366.738@0.0.1366.738" timestamp="1603704952201" />
-    <state x="339" y="165" key="run.anything.popup" timestamp="1604257750191">
+    <state width="600" height="428" key="javadoc.popup" timestamp="1608102597397">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="339" y="165" key="run.anything.popup/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604257750191" />
+    <state width="600" height="428" key="javadoc.popup/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1608102597397" />
+    <state x="339" y="165" key="run.anything.popup" timestamp="1608625271984">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="339" y="165" key="run.anything.popup/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1606575223964" />
     <state x="339" y="165" key="run.anything.popup/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1603964853611" />
+    <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1608625271984" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1604068279418">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
