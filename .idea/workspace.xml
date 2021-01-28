@@ -2,22 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3e79e59-55d2-4da0-99e7-dda5ffb8fcdb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/download.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/talayanan.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/talayanan.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/user/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DiajukanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DiajukanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DiprosesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DiprosesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DirekapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DirekapController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/InformasiPengaduan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/InformasiPengaduan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PengaduanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PengaduanController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/diajukan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/diajukan.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/diproses.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/diproses.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,12 +148,13 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -255,7 +247,30 @@
       <workItem from="1608042088641" duration="2348000" />
       <workItem from="1608099089317" duration="4263000" />
       <workItem from="1608619633090" duration="6200000" />
+      <workItem from="1608695043878" duration="800000" />
+      <workItem from="1608786059416" duration="698000" />
+      <workItem from="1608787518898" duration="521000" />
+      <workItem from="1608788068305" duration="663000" />
+      <workItem from="1608788820041" duration="329000" />
+      <workItem from="1608789178261" duration="645000" />
+      <workItem from="1608789864450" duration="91000" />
+      <workItem from="1608812740944" duration="24000" />
+      <workItem from="1609047304903" duration="944000" />
+      <workItem from="1609054658843" duration="443000" />
+      <workItem from="1609159090266" duration="15435000" />
+      <workItem from="1609218430107" duration="2681000" />
+      <workItem from="1609289311422" duration="186000" />
+      <workItem from="1609676935430" duration="76000" />
+      <workItem from="1611860093064" duration="80000" />
     </task>
+    <task id="LOCAL-00001" summary="tes commit storm">
+      <created>1608695135631</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1608695135631</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,65 +278,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="493" y="248" key="#Composer" timestamp="1603686398020">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="493" y="248" key="#Composer/0.0.1366.738/1366.-104.1366.738/2732.-237.1280.689@0.0.1366.738" timestamp="1603686398020" />
-    <state x="309" y="47" key="#Inspections" timestamp="1604167780529">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="309" y="47" key="#Inspections/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1604167780529" />
-    <state x="276" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604883450480">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="276" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604883450480" />
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606289425126">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1606068252047" />
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1605942094725" />
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1606289425126" />
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1603708510038">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738/2732.-237.1280.689/1366.-104.1366.738@0.0.1366.738" timestamp="1603708510038" />
-    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1603708510038">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738/2732.-237.1280.689/1366.-104.1366.738@0.0.1366.738" timestamp="1603708510038" />
-    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1603708510037">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738/2732.-237.1280.689/1366.-104.1366.738@0.0.1366.738" timestamp="1603708510037" />
-    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1603708510038">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738/2732.-237.1280.689/1366.-104.1366.738@0.0.1366.738" timestamp="1603708510038" />
-    <state x="459" y="92" key="NewPhpClassDialog" timestamp="1606018130367">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="459" y="92" key="NewPhpClassDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1606018130367" />
-    <state x="184" y="14" key="SettingsEditor" timestamp="1604337793185">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="184" y="14" key="SettingsEditor/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604337793185" />
-    <state x="184" y="14" key="SettingsEditor/0.0.1366.738/1366.-104.1366.738/2732.-237.1280.689@0.0.1366.738" timestamp="1603775112179" />
-    <state x="184" y="14" key="SettingsEditor/0.0.1366.738/2732.-237.1280.689/1366.-104.1366.738@0.0.1366.738" timestamp="1603704952201" />
-    <state width="600" height="428" key="javadoc.popup" timestamp="1608102597397">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="600" height="428" key="javadoc.popup/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1608102597397" />
-    <state x="339" y="165" key="run.anything.popup" timestamp="1608625271984">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="339" y="165" key="run.anything.popup/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1606575223964" />
-    <state x="339" y="165" key="run.anything.popup/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1603964853611" />
-    <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1608625271984" />
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1604068279418">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604068279418" />
+    <MESSAGE value="tes commit storm" />
+    <option name="LAST_COMMIT_MESSAGE" value="tes commit storm" />
   </component>
 </project>

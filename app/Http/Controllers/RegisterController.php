@@ -16,12 +16,15 @@ class RegisterController extends Controller
         $pesan = [
             'required' => ':attribute tidak boleh kosong',
             'unique' => ':attribute tidak boleh sama',
-            'exists' => ':attribute tidak ditemukan'
+            'exists' => ':attribute tidak ditemukan',
+            'min' => ':attribute minimal 10 nomor',
+            'max' => ':attribute maximal 12 nomor',
+            'email' => ':attribute yang sesuai'
         ];
         return validator($data, [
             'nama' => 'required',
-            'kontak' => 'required',
-            'email' => 'required',
+            'kontak' =>  'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:12',
+            'email' => 'required|email:rfc',
             'password' => 'required',
             'role' => 'required',
         ], $pesan);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\InformasiPengaduan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -142,6 +143,87 @@ class PengaduanController extends Controller
         try {
             return Datatables::of($pengaduan)->make(true);
         } catch (\Exception $e) {
+        }
+    }
+
+
+
+    public function profile(){
+        return view('user.profile');
+    }
+
+    protected function  validasiEdit($data)
+    {
+        $pesan = [
+            'required' => ':attribute tidak boleh kosong',
+            'unique' => ':attribute tidak boleh sama',
+            'exists' => ':attribute tidak ditemukan',
+            'min' => ':attribute minimal 10 nomor',
+            'max' => ':attribute maximal 12 nomor',
+            'email' => ':attribute yang sesuai'
+        ];
+        return validator($data, [
+            'nama' => 'required',
+            'kontak' =>  'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:12',
+            'email' => 'required|email:rfc',
+            'user' => 'required',
+        ], $pesan);
+    }
+
+    public function editprofile(){
+        $validasi = $this->validasiEdit(request()->all());
+        if ($validasi->passes()) {
+           $edit = User::where('id', auth()->user()->id)
+               ->update([
+                   'name' => request()->nama,
+                   'kontak' => request()->kontak,
+                   'email' => request()->email,
+                   'role_id' => request()->user,
+               ]);
+            if($edit){
+                return json_encode(array("success"=>"Berhasil Mengubah Data Profile"));
+            }else{
+                return json_encode(array("error"=>"Gagal Mengubah Data Profile"));
+            }
+        }else{
+            $msg = $validasi->getMessageBag()->messages();
+            $err = array();
+            foreach ($msg as $key=>$item) {
+                $err[] = $item[0];
+            }
+            return json_encode(array("error"=>$err));
+        }
+    }
+
+    protected function  validasiPassword($data)
+    {
+        $pesan = [
+            'required' => ':attribute tidak boleh kosong',
+        ];
+        return validator($data, [
+            'password' => 'required'
+        ], $pesan);
+    }
+
+    public function editpassword(){
+        $validasi = $this->validasiPassword(request()->all());
+        if ($validasi->passes()) {
+           $edit = User::where('id', auth()->user()->id)
+               ->update([
+                   'password' => bcrypt(request()->password),
+               ]);
+            if($edit){
+                return json_encode(array("success"=>"Berhasil Mengubah Password"));
+            }else{
+                return json_encode(array("error"=>"Gagal Mengubah Password"));
+            }
+        }else{
+            $msg = $validasi->getMessageBag()->messages();
+            $err = array();
+            foreach ($msg as $key=>$item) {
+                $err[] = $item[0];
+            }
+            return json_encode(array("error"=>$err));
         }
     }
 }

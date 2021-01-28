@@ -175,32 +175,41 @@
                             @endif
 
                             @if ( auth()->user()->role->nama != "admin")
-                                <a href="{{ url('user') }}" class="nav-link {{ request()->is('user') ? 'active' : '' }}">
-                                    <i class="icon-file-text2"></i>
-                                    <span>
-										Pengaduan
-									</span>
-                                </a>
-                                <a href="{{ url('user/process') }}" class="nav-link {{ request()->is('user/process') ? 'active' : '' }}">
-                                    <i class="icon-file-text2"></i>
-                                    <span>
-										Proses
-									</span>
-                                </a>
+                                <li class="nav-item">
+                                    <a href="{{ url('user') }}" class="nav-link {{ request()->is('user') ? 'active' : '' }}">
+                                        <i class="icon-file-text2"></i>
+                                        <span>
+                                            Pengaduan
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('user/process') }}" class="nav-link {{ request()->is('user/process') ? 'active' : '' }}">
+                                        <i class="icon-file-text2"></i>
+                                        <span>
+                                            Proses
+                                        </span>
+                                    </a>
+                                </li>
 
-                                <a href="{{ url('user/history') }}" class="nav-link {{ request()->is('user/history') ? 'active' : '' }}">
-                                    <i class="icon-file-text2"></i>
-                                    <span>
-										Riwayat Pengaduan
-									</span>
-                                </a>
+                                <li class="nav-item">
+                                    <a href="{{ url('user/history') }}" class="nav-link {{ request()->is('user/history') ? 'active' : '' }}">
+                                        <i class="icon-file-text2"></i>
+                                        <span>
+                                            Riwayat Pengaduan
+                                        </span>
+                                    </a>
+                                </li>
 
-                                <a href="{{ url('user/history') }}" class="nav-link {{ request()->is('user/history') ? 'active' : '' }}">
-                                    <i class="icon-file-text2"></i>
-                                    <span>
-										Profil
-									</span>
-                                </a>
+                                <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Akun</div> <i class="icon-menu" title="Forms"></i></li>
+                                <li class="nav-item">
+                                    <a href="{{ url('user/profile') }}" class="nav-link {{ request()->is('user/profile') ? 'active' : '' }}">
+                                        <i class="icon-file-text2"></i>
+                                        <span>
+                                            Profile
+                                        </span>
+                                    </a>
+                                </li>
                             @endif
                         </ul>
                     </div>

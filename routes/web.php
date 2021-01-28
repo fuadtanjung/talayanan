@@ -175,6 +175,11 @@ Route::middleware('auth')->group(function () {
             //history
             Route::get('history', 'PengaduanController@history');
             Route::get('data3', 'PengaduanController@datahistory');
+
+            //
+            Route::get('profile', 'PengaduanController@profile');
+            Route::post('editprofile/{id}', 'PengaduanController@editprofile');
+            Route::post('editpassword/{id}', 'PengaduanController@editpassword');
         });
     });
 });
